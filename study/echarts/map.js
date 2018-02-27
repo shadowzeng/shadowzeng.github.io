@@ -43,11 +43,14 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
         },
         bindUI: function(){
 
+        },
+        test:function(){
+            alert("hello rebecca");
         }
     };
 
     var model = {
-
+        test: $.proxy(maptest.test, maptest)
     }
     maptest.init();
     return model;
