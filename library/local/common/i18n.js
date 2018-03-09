@@ -4,8 +4,9 @@
  */
 define(["jquery"], function ($) {
     var model = {
-        textTraceDataReceive: "接收轨迹数据",
-        textTraceDataStop: "停止接收"
+        textScatterTest: "散点图（scatter）",
+        textLinesTest: "线图（lines）"
+
     };
 
     return model;
