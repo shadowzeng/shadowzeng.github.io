@@ -19,7 +19,7 @@ require.config({
         cookie: "library/3rdparty/jquery/cookie/cookie-1.4.1",
 		text: "library/3rdparty/require/text-2.0.12",
 		transitions: "library/3rdparty/durandal/2.1.0/js/transitions",
-        echarts:"library/3rdparty/echarts/echarts-3.8.5"
+        echarts:"library/3rdparty/echarts/echarts.min-3.8.5"
     },
     shim: {
        
