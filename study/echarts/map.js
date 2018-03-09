@@ -31,9 +31,9 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
             var option = {
                 bmap: {
                     // 百度地图中心经纬度
-                    center: [114.407449,30.494252],
+                    center: [114.430768,30.463156],
                     // 百度地图缩放
-                    zoom: 14,
+                    zoom: 17,
                     // 是否开启拖拽缩放，可以只设置 'scale' 或者 'move'
                     roam: true,
                     // 百度地图的自定义样式，见 http://developer.baidu.com/map/jsdevelop-11.htm
@@ -157,16 +157,38 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
                     zlevel: 2   // 在第一层级，大层级显示在最上面
                 }]
             };
-
+debugger
             myChart.setOption(hisTraceOption);
+        },
+        pause:function(){
+            //debugger
+           // console.log(myChart._zr)
+            myChart._zr.animation.pause();
+        },
+        resume:function(){
+            myChart._zr.animation.resume();
+        },
+        stop:function(){
+            myChart._zr.animation.stop();
+        },
+        start:function(){
+            myChart._zr.animation.start();
         }
     };
 debugger
     var model = {
         textScatterTest: i18nCommon.textScatterTest,
         textLinesTest: i18nCommon.textLinesTest,
+        textPausePlay: i18nCommon.textPausePlay,
+        textResumePlay: i18nCommon.textResumePlay,
+        textStopPlay: i18nCommon.textStopPlay,
+        textStartPlay: i18nCommon.textStartPlay,
         scatterTest: $.proxy(maptest.scatterTest, maptest),
-        linesTest: $.proxy(maptest.linesTest,maptest)
+        linesTest: $.proxy(maptest.linesTest,maptest),
+        pause:$.proxy(maptest.pause,maptest),
+        resume:$.proxy(maptest.resume,maptest),
+        stop:$.proxy(maptest.stop,maptest),
+        start:$.proxy(maptest.start,maptest)
     }
     maptest.init();
     return model;

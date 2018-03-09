@@ -6703,7 +6703,7 @@ Layer.prototype = {
         }
     }
 };
-debugger
+
 var requestAnimationFrame = (
     typeof window !== 'undefined'
     && (
@@ -10669,7 +10669,7 @@ ZRender.prototype = {
      * Perform all refresh
      */
     flush: function () {
-        if (this._needsRefresh) {debugger
+        if (this._needsRefresh) {
             this.refreshImmediately();
         }
         if (this._needsRefreshHover) {
