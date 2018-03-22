@@ -5997,7 +5997,7 @@ Storage.prototype = {
         }
         else {
             el.__clipPaths = clipPaths;
-
+            
             this._displayList[this._displayListLen++] = el;
         }
     },
@@ -21753,7 +21753,7 @@ taskProto.pipe = function (downTask) {
     }
 };
 
-taskProto.dispose = function () {
+taskProto.dispose = function () {debugger
     if (this._disposed) {
         return;
     }
@@ -23155,7 +23155,7 @@ proto.getPipeline = function (pipelineId) {
  * Caution:
  * `updateStreamModes` use `seriesModel.getData()`.
  */
-proto.updateStreamModes = function (seriesModel, view) {
+proto.updateStreamModes = function (seriesModel, view) {debugger
     var pipeline = this._pipelineMap.get(seriesModel.uid);
     var data = seriesModel.getData();
     var dataLen = data.count();
@@ -23170,7 +23170,7 @@ proto.updateStreamModes = function (seriesModel, view) {
     };
 };
 
-proto.restorePipelines = function (ecModel) {
+proto.restorePipelines = function (ecModel) {debugger
     var scheduler = this;
     var pipelineMap = scheduler._pipelineMap = createHashMap();
     ecModel.eachSeries(function (seriesModel) {
@@ -24950,7 +24950,7 @@ function triggerUpdatedEvent(silent) {
  * @param {number} params.seriesIndex
  * @param {Array|TypedArray} params.data
  */
-echartsProto.appendData = function (params) {
+echartsProto.appendData = function (params) {debugger
     var seriesIndex = params.seriesIndex;
     var ecModel = this.getModel();
     var seriesModel = ecModel.getSeriesByIndex(seriesIndex);
@@ -25121,7 +25121,7 @@ function renderComponents(ecIns, ecModel, api, payload, dirtyList) {
  * Render each chart and component
  * @private
  */
-function renderSeries(ecIns, ecModel, api, payload, dirtyMap) {
+function renderSeries(ecIns, ecModel, api, payload, dirtyMap) {debugger
     // Render all charts
     var scheduler = ecIns._scheduler;
     var unfinished;
@@ -54628,7 +54628,7 @@ extendChartView({
 
     init: function () {},
 
-    render: function (seriesModel, ecModel, api) {
+    render: function (seriesModel, ecModel, api) {debugger
         var data = seriesModel.getData();
 
         var lineDraw = this._updateLineDraw(data, seriesModel);

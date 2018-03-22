@@ -1,0 +1,50 @@
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.panel {
+    position:absolute;
+    height:50px;
+    width:400px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: 1px 1px 3px 1px #cbcbcb;
+    top:30px;
+    left: 40px;
+}
+.panel .operate-control{
+    height: 100%;
+    width: 100px;
+    float: left;
+}
+.panel .operate-control .play {
+    float: left;
+    height: 100%;
+    width: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 1;
+    background-image: url(../img/play.png);
+    background-size: 40px 40px;
+}
+.panel .operate-control .stop {
+    float: left;
+    height: 100%;
+    width: 50px;
+    margin-left: -11px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 1;
+    background-image: url(../img/stop.png);
+    background-size: 24px 24px;
+}
+.panel .time-control {
+    float: left;
+}
+.panel .time-control .handler {
+    height: 14px;
+}

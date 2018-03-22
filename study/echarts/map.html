@@ -4,23 +4,22 @@
             <div class="trace-operate" style="overflow:hidden;">
                 <p style="margin:10px">echarts 轨迹效果测试</p>
             </div>
-            <div class="function-test" style="overflow:hidden;float:right;margin-right:10px">
+            <div class="function-test" style="overflow:hidden;margin-left:10px">
                 <input data-bind="value:textScatterTest,click:scatterTest" type="button"/>
-            </div>
-            <div style="overflow:hidden;float:right;margin-right:10px">
                 <input data-bind="value:textLinesTest,click:linesTest" type="button"/>
+                <input data-bind="value:textTimelineTest,click:timelineTest" type="button"/>
             </div>
-            <div style="overflow:hidden;float:right;margin-right:10px">
+            <div style="margin-left:10px">
                 <input data-bind="value:textPausePlay,click:pause" type="button"/>
-            </div>
-            <div style="overflow:hidden;float:right;margin-right:10px">
                 <input data-bind="value:textResumePlay,click:resume" type="button"/>
-            </div>
-            <div style="overflow:hidden;float:right;margin-right:10px">
                 <input data-bind="value:textStopPlay,click:stop" type="button"/>
-            </div>
-            <div style="overflow:hidden;float:right;margin-right:10px">
                 <input data-bind="value:textStartPlay,click:start" type="button"/>
+            </div>
+            <div style="margin-left:10px">
+                <input data-bind="click:section1" type="button" value="section1"/>
+                <input data-bind="click:section2" type="button" value="section2"/>
+                <input data-bind="click:section3" type="button" value="section3"/>
+                <input data-bind="click:animatorpause" type="button" value="animatorpause"/>
             </div>
         </div>
     </div>

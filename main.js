@@ -10,6 +10,7 @@ require.config({
     waitSeconds: 30,
     /** 模块路径 */
     paths: {
+		css: "library/3rdparty/require/css-0.1.8",
         jquery: "library/3rdparty/jquery/jquery",
 		knockout: "library/3rdparty/knockout/knockout-3.2.0",
         durandal: "library/3rdparty/durandal/2.1.0/js",
@@ -19,10 +20,64 @@ require.config({
         cookie: "library/3rdparty/jquery/cookie/cookie-1.4.1",
 		text: "library/3rdparty/require/text-2.0.12",
 		transitions: "library/3rdparty/durandal/2.1.0/js/transitions",
-        echarts:"library/3rdparty/echarts/echarts.min-3.8.5"
+        echarts:"library/3rdparty/echarts/echarts-4.0.4",
+		draggable: "library/3rdparty/easyui/easyui-draggable/draggable-1.4.4",
+        droppable: "library/3rdparty/easyui/easyui-droppable/droppable-1.4.4",
+		slider: "library/3rdparty/easyui/easyui-slider/slider-1.4.4",
+        tree: "library/3rdparty/easyui/easyui-tree/tree-1.4.4",
+        parser: "library/3rdparty/easyui/easyui-parser/parser-1.4.4",
+		spinner:"library/3rdparty/easyui/easyui-spinner/spinner-1.4.4",
+		textbox:"library/3rdparty/easyui/easyui-textbox/textbox",
+		tooltip:"library/3rdparty/easyui/easyui-tooltip/tooltip",
+		linkbutton:"library/3rdparty/easyui/easyui-linkbutton/linkbutton",
+		validatebox:"library/3rdparty/easyui/easyui-validatebox/validatebox",
+		timespinner:"library/3rdparty/easyui/easyui-timespinner/timespinner-1.4.4"
     },
     shim: {
-       
+       tree: {
+        	deps: ["jquery", "draggable", "droppable", "parser", "css!library/3rdparty/easyui/easyui-tree/tree-1.4.4"],
+        	exports: "$.fn.tree"
+        },
+		draggable: {
+        	deps: ["jquery", "parser"],
+        	exports: "$.fn.Draggable"
+        },
+        droppable: {
+        	deps: ["jquery", "parser"],
+        	exports: "$.fn.Droppable"
+        },
+		slider: {
+        	deps: ["jquery","draggable", "css!library/3rdparty/easyui/easyui-slider/slider-1.4.4"],
+        	exports: "$.fn.slider"
+        },
+		parser: {
+        	deps: ["jquery"],
+        	exports: "$.fn.parser"
+        },
+		linkbutton:{
+			deps: ["jquery","parser", "css!library/3rdparty/easyui/easyui-linkbutton/linkbutton.css"],
+			exports: "$.fn.linkbutton"
+		},
+		validatebox:{
+			deps: ["jquery","parser","tooltip", "css!library/3rdparty/easyui/easyui-validatebox/validatebox.css"],
+			exports: "$.fn.validatebox"
+		},
+		textbox:{
+			deps: ["jquery","parser","validatebox","linkbutton","css!library/3rdparty/easyui/easyui-textbox/textbox.css"],
+			exports: "$.fn.textbox"
+		},
+		tooltip:{
+			deps: ["jquery","parser", "css!library/3rdparty/easyui/easyui-tooltip/tooltip.css"],
+			exports: "$.fn.tooltip"
+		},
+		spinner: {
+        	deps: ["jquery","textbox","css!library/3rdparty/easyui/easyui-spinner/spinner-1.4.4"],
+        	exports: "$.fn.spinner"
+        },
+		timespinner: {
+        	deps: ["spinner"],
+        	exports: "$.fn.timespinner"
+        }
     }
 });
 
@@ -54,5 +109,6 @@ define(["durandal/system", "durandal/app", "http", "i18nCommon"], function (syst
 
     app.start().then(function() {
 		app.setRoot("study/echarts/map", "entrance", "app-main");
+		//app.setRoot("study/panel/panel", "entrance", "app-main");
     });
 });
