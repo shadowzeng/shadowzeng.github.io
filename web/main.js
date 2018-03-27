@@ -31,7 +31,8 @@ require.config({
 		tooltip:"library/3rdparty/easyui/easyui-tooltip/tooltip",
 		linkbutton:"library/3rdparty/easyui/easyui-linkbutton/linkbutton",
 		validatebox:"library/3rdparty/easyui/easyui-validatebox/validatebox",
-		timespinner:"library/3rdparty/easyui/easyui-timespinner/timespinner-1.4.4"
+		timespinner:"library/3rdparty/easyui/easyui-timespinner/timespinner-1.4.4",
+		timeline:"library/local/timeline/timeline"
     },
     shim: {
        tree: {

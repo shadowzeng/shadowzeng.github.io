@@ -48,3 +48,202 @@ html,body {
 .panel .time-control .handler {
     height: 14px;
 }
+/*************** test **********************/
+.slider {
+    height: 20px;
+    position: absolute;
+    width: 20px;
+    background-color: pink;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/*************** timeline *********************/
+.timeline {
+    position: absolute;
+    width: 890px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,.6);
+    right: -500px;
+    bottom: 35px;
+    box-shadow: 0px 0px 1px 1px #cbcbcb;
+}
+
+.timelineControl {
+    width: 130px;
+    height: 100%;
+    float: left;
+}
+
+.timelinePlay {
+    width: 50px;
+    background-image: url(../img/timeline-play.png);
+    background-size: 40px 40px;
+	float: left;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.timelineMain {
+    margin-left: 12px;
+    width: 721px;
+    float: left;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.timeHour {
+    height: 6px;
+    border-bottom: 1px solid #c2c2c4;
+    border-top: 1px solid #c2c2c4;
+    border-left: 1px solid #a3a3a4;
+    width: 29px;
+    float: left;
+    margin-top: 22px;
+    background-color: #c2c2c4;
+}
+
+.timeHourFirst {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.timeHourFinal {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-right: 1px solid #a3a3a4;
+}
+
+.timeNumber {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    font-size: 13px;
+    bottom: 2px;
+    color: #222;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.timelineProgress {
+    background-image: url(../img/progress.png);
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    cursor: pointer;
+    top: 4px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 10;
+    margin-left: -20px;
+}
+
+.timelineLabel {
+    position: absolute;
+    height: 30px;
+    width: 44px;
+    top: -33px;
+    margin-left: -22px;
+    z-index: 20;
+}
+
+.caliperA {
+	left: 0px
+}
+
+.caliperB {
+	left: 721px;
+}
+
+.caliperA, .caliperB {
+    height: 60px;
+    position: absolute;
+    width: 20px;
+    margin-left: -10px;
+}
+
+.caliperLine {
+    height: 50px;
+    width: 2px;
+    margin: 0 auto;
+    background-color: #45a1f3;
+}
+
+.caliperPointerA {
+    margin-left: -9px;
+    border-right-color: #45a1f3;
+}
+
+.caliperPointerB {
+	margin-left: 9px;
+    border-left-color: #45a1f3;
+}
+
+.caliperPointerA {
+    height: 0;
+    width: 0;
+    border: 10px solid #45a1f3;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    cursor: pointer;
+}
+
+ .caliperPointerB {
+    height: 0;
+    width: 0;
+    border: 10px solid #45a1f3;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    cursor: pointer;
+}
+.caliperPartA {
+    left: 0;
+	width: 0px;
+}
+.caliperPartB {
+    right: 0;
+	width: 0px;
+}
+.caliperPartA, .caliperPartB {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background-color: rgba(40,40,40,.21);
+}
+.runPart {
+    background-color: #2398ff;
+    height: 6px;
+    top: 22px;
+    position: absolute;
+    border: 1px solid #218eef;
+}
+.timelineLabelcontent {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(0,0,0,.7);
+    border-radius: 2px;
+    color: #efefef;
+    line-height: 27px;
+    text-align: center;
+    font-size: 12px;
+}
+.timelineLabelpointer {
+    height: 0;
+    width: 0;
+    border: 6px solid rgba(0,0,0,.7);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    margin-left: 16px;
+}

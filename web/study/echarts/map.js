@@ -1,5 +1,5 @@
-define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts","study/data/bdmapstyle","study/data/tracedata","library/3rdparty/echarts/bmap/bmap"],
- function(app,composition,ko,i18nCommon,echarts,bdmapstyle,tracedata) {
+define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts","timeline","study/data/bdmapstyle","study/data/tracedata","library/3rdparty/echarts/bmap/bmap"],
+ function(app,composition,ko,i18nCommon,echarts,Timeline,bdmapstyle,tracedata) {
     'use strict';
     
     var myChart = null;
@@ -25,6 +25,27 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
         },
         rendUI: function(){
             this.getPathData();
+
+            // var d=document,o=d.getElementsByClassName('slider')[0],s=o.style,x,y,p='onmousemove';
+            // o.onmousedown=function(e){debugger
+            //     e=e||event;x=e.clientX-o.offsetLeft;y=e.clientY-o.offsetTop;
+            //     d[p]=function(e){
+            //         e=e||event;s.left=e.clientX-x+'px';s.top=e.clientY-y+'px'
+            //     };
+            //     d.onmouseup=function(){d[p]=null}
+            // } 
+            
+            var x,o = $('.slider'),d = $(document);
+            o.on('mousedown',function(e){
+                e = e||event;
+                x = e.clientX - o.offset().left;
+                d.on('mousemove',function(e){debugger
+                    e=e||event;o.css('left',(e.clientX-x)+'px');
+                });
+                 d.on('mouseup',function(e){
+                    d.off('mousemove');
+                 });
+            });
 
             myChart = echarts.init(document.getElementById('map'));
 
@@ -88,7 +109,7 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
                     zlevel: 2   // 在第一层级，大层级显示在最上面
                 }]
             };debugger
-            myChart.setOption(option,true); 
+            myChart.setOption(option,true);
         },
         bindUI: function(){
             
@@ -343,9 +364,15 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
             });
         },
         animatorpause:function(){
+            /*
             var clips = myChart._zr.animation._clips;
             $.each(clips,function(i,e){
                 e.pause();
+            }); */document.get
+            var container = document.getElementsByClassName('BMap_cpyCtrl');
+            var timeline = new Timeline(null,null,container);
+            $.getJSON("study/data/baiduyingyandata.json",function(data){
+                timeline.listenTrackRoute(data);
             });
         }
     };
