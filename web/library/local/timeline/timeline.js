@@ -2,7 +2,7 @@ define(['jquery'], function($) {
     var template = 
         '<div class="timeline">'+
                 '<div class="timelineControl">'+
-                    '<div class="timelinePlay"></div>'+   
+                    '<div class="timelineBtn timelinePlay"></div>'+   
                 '</div>'+
                 '<div class="timelineMain">'+
 
@@ -95,25 +95,12 @@ define(['jquery'], function($) {
             this.initTimeline();
         },
         bindUI:function(){
-            var o = $('.caliperPointerA'),d=$(document), t = $('.caliperA');
+            this.container.find('.timelineBtn').on('click',$.proxy(this.handlePlayOrPause,this));
             this.container.find('.timelineMain').on('click',$.proxy(this.handleTimelineClick,this));
             this.container.find('.timelineMain').on('mouseover',$.proxy(this.handleHoverLabel,this));
             this.container.find('.timelineMain').on('mouseout',$.proxy(this.handleOffLabel,this));
             this.container.find('.timelineProgress').on('mousedown',$.proxy(this.handleProgressDragStart,this));
             this.container.find('.caliperPointerA').on('mousedown',$.proxy(this.handleCaliperDragStart,this));
-            // this.container.find('.caliperPointerA').on('mousedown',function(e){
-            //     e = e||event;
-            //     offset = t.offset().left;
-            //     d.on('mousemove',function(e){debugger
-            //         e=e||event;
-            //         //console.log(e.clientX+"-"+x);
-
-            //         t.css('left',(e.clientX-offset)+'px');
-            //     });
-            //     d.on('mouseup',function(e){
-            //         d.off('mousemove');
-            //     });
-            // });
             this.container.find('.caliperPointerB').on('mousedown',$.proxy(this.handleCaliperDragStart,this));
         },
         initTimeline:function(){
@@ -161,6 +148,14 @@ define(['jquery'], function($) {
                 if (i == 'hovertime'){
                     this.container.find('.timelineLabelcontent').html(state[i]);
                 }
+                if (i == 'playOrPause'){debugger
+                    if (state[i] == 'timelinePlay'){
+                        this.container.find('.timelineBtn').removeClass('timelinePause').addClass('timelinePlay');
+                    }else{
+                        this.container.find('.timelineBtn').removeClass('timelinePlay').addClass('timelinePause');
+                    }
+                    
+                }
                 this.state[i] = state[i];
             }
         },
@@ -176,6 +171,36 @@ define(['jquery'], function($) {
                 caluperCurrent: ''
             });
             $('.timelineLabel').css('display','none');
+        },
+        handlePlayOrPause:function(){
+            if (this.state.totalPointData.length === 0) {
+                return;
+            }
+            window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+            var that = this;
+            var newStatus = '';
+            var step = function(timestamp) {debugger
+                var speed = that.state.playSpeed[that.state.playSpeedIndex];
+                that.setState({progress: that.state.progress + speed});
+                that.setState({currentProgress: that.state.currentProgress + speed});
+                that.setState({currentPageX: that.state.currentPageX + speed});
+                that.setRunningPointByProgress(that.state.progress + speed);
+                if (that.state.progress + speed > that.state.caliperBPosition) {
+                    newStatus = 'timelinePlay';
+                    that.setState({playOrPause: newStatus});
+                    return;
+                }
+                if (that.state.playOrPause === 'timelinePause') { // 图标为暂停图标则继续播放
+                    requestAnimationFrame(step);
+                } 
+            }
+            if (event.target.className === 'timelinePause') { // 如果当前图标为pause类型，点击后图标class设置为play
+                newStatus = 'timelinePlay';
+            } else { // 如果当前图标是play类型，那么点击后开始播放动画，设置图标为pause类型
+                newStatus = 'timelinePause';
+                requestAnimationFrame(step);
+            }
+            this.setState({playOrPause: newStatus});
         },
         handleTimelineClick:function(event){
             if (this.state.totalPointData.length === 0) {
@@ -224,6 +249,21 @@ define(['jquery'], function($) {
         onProgressDragMouseUp:function(){
             this.handleProgressDragEnd();
             this.setState({currentPageX: event.clientX});
+        },
+        handleProgressDragEnd: function (event) {
+            var that = this;
+            if (that.state.totalPointData.length === 0) {
+                return;
+            }
+            $(document).off('mousemove', that.onProgessDrag);
+            $(document).off('mouseup', that.onProgressDragMouseUp);
+            this.setState({currentProgress: that.state.progress});
+            // this.setState({currentTimeStamp: that.getTimeByPx(that.state.progress)});
+            // var point = that.getPointByTime(that.getTimeByPx(that.state.progress));
+            // if (point.loc_time !== undefined){
+            //     that.setRunningPoint(point);
+            // }
+            that.setRunningPointByProgress(that.state.progress)
         },
         handleCaliperDragStart:function(event){
             var that = this;

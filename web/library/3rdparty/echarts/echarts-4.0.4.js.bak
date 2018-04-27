@@ -2709,7 +2709,7 @@ Clip.prototype = {
             return;
         }
 
-        var percent = this.percent||(globalTime - this._startTime - this._pausedTime) / this._life;
+        var percent = (globalTime - this._startTime - this._pausedTime) / this._life;
 
         // 还没开始
         if (percent < 0) {
@@ -25406,7 +25406,7 @@ function render(ecIns, ecModel, api, payload) {
     each(ecIns._chartsViews, function (chart) {
         chart.__alive = false;
     });
-
+debugger
     renderSeries(ecIns, ecModel, api, payload);
 
     // Remove groups of unrendered charts
@@ -54946,8 +54946,8 @@ effectLineProto._updateEffectAnimation = function (lineData, effectModel, idx) {
                 self.updateSymbolPosition(symbol);
             });
         if (!loop) {
-            animator.done(function () {debugger
-                self.remove(symbol);
+            animator.done(function () {
+                //self.remove(symbol);
             });
         }
         animator.start();

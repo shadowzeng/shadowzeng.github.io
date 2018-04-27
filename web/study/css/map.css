@@ -76,11 +76,8 @@ html,body {
     float: left;
 }
 
-.timelinePlay {
-    width: 50px;
-    background-image: url(../img/timeline-play.png);
-    background-size: 40px 40px;
-	float: left;
+.timelinePlay, .timelineSlow, .timelineQuick, .timelinePause {
+    float: left;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -88,6 +85,24 @@ html,body {
     opacity: 1;
 }
 
+.timelinePlay {
+    width: 50px;
+    background-image: url(../img/timeline-play.png);
+    background-size: 40px 40px;
+}
+
+.timelinePlay:hover {
+    background-image: url(../img/timeline-playhover.png);
+}
+
+.timelinePause {
+    width: 50px;
+    background-image: url(../img/timeline-pause.png);
+    background-size: 40px 40px;
+}
+.timelinePause:hover {
+    background-image: url(../img/timeline-pausehover.png);
+}
 .timelineMain {
     margin-left: 12px;
     width: 721px;
