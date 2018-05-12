@@ -4270,7 +4270,7 @@ Animatable.prototype = {
         animator.during(function (target) {
             el.dirty(animatingShape);
         })
-        .done(function () {
+        .done(function () {debugger
             // FIXME Animator will not be removed if use `Animator#stop` to stop animation
             animators.splice(indexOf(animators, animator), 1);
         });
@@ -26736,7 +26736,7 @@ listProto.mapDimension = function (coordDim, idx) {
  * @param {Function} [dimValueGetter] (dataItem, dimName, dataIndex, dimIndex) => number
  */
 listProto.initData = function (data, nameList, dimValueGetter) {
-debugger
+
     var notProvider = Source.isInstance(data) || isArrayLike(data);
     if (notProvider) {
         data = new DefaultDataProvider(data, this.dimensions.length);
@@ -55492,7 +55492,7 @@ extendChartView({
 
     init: function () {},
 
-    render: function (seriesModel, ecModel, api) {
+    render: function (seriesModel, ecModel, api) {debugger
         var data = seriesModel.getData();
 
         var lineDraw = this._updateLineDraw(data, seriesModel);
@@ -55532,7 +55532,7 @@ extendChartView({
                 });
             }
         }
-
+debugger
         lineDraw.updateData(data);
 
         this._lastZlevel = zlevel;
