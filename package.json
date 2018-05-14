@@ -1,0 +1,15 @@
+{
+    "name": "shadowzeng-page",
+    "version": "0.0.1",
+    "description": "for shadowzeng",
+    "author": "shadowzeng",
+    "scripts": {
+        
+    },
+    "devDependencies": {
+        "echarts":"4.0.4"
+    },
+    "dependencies": {
+        
+    }
+}
