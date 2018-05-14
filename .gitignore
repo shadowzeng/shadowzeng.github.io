@@ -168,7 +168,6 @@ rat.iml
 
 node_modules
 
-/lib
 todo
 **/*.log
 *.sublime-workspace
