@@ -1,22 +1,25 @@
 <template>
-  <div class="hello">
+  <div class="main">
+    <a class="avatar" href="/">
+      <img src="../assets/avatar.jpg">
+    </a>
     <h2>Dear Rebecca</h2>
     <h3>吴雨桐</h3>
     <hr>
-    <div class="nav">
+    <nav class="nav">
       <ul>
-        <li class="item"><a href="">首页</a></li>
-        <li class="item"><a href="">文章</a></li>
-        <li class="item"><a href="">项目</a></li>
-        <li class="item"><a href="">更多</a></li>
+        <li class="item"><router-link to="/">首页</router-link></li>
+        <li class="item"><router-link to="/blog">文章</router-link></li>
+        <li class="item"><router-link to="/project">项目</router-link></li>
+        <li class="item"><router-link to="/about">关于</router-link></li>
       </ul>
-    </div>
+    </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'MainPage',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -27,6 +30,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.main {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 150px;
+}
+img {
+  width: 100px;
+  border-radius: 50%;
+  box-shadow: 1px 2px 8px -2px grey;
+}
 h1, h2 {
   font-weight: normal;
 }
