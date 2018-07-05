@@ -1,14 +1,7 @@
 <template>
   <div>
     <div class="navi">
-      <nav class="nav">
-        <ul>
-          <li class="item"><router-link to="/">首页</router-link></li>
-          <li class="item"><router-link to="/blog">文章</router-link></li>
-          <li class="item"><router-link to="/project">项目</router-link></li>
-          <li class="item"><router-link to="/about">关于</router-link></li>
-        </ul>
-      </nav>
+      <MainNav/>
     </div>
     <hr>
     <div class="blog-list">
@@ -21,8 +14,12 @@
 </template>
 
 <script>
+import MainNav from './common/MainNav'
 export default {
-    name: 'Blog'
+    name: 'Blog',
+    components:{
+      MainNav
+    }
 }
 </script>
 

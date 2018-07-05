@@ -3,27 +3,25 @@
     <a class="avatar" href="/">
       <img src="../assets/avatar.jpg">
     </a>
-    <h2>Dear Rebecca</h2>
-    <h3>吴雨桐</h3>
+    <h2>{{English_Name}}</h2>
+    <h3>{{Chinese_Name}}</h3>
     <hr>
-    <nav class="nav">
-      <ul>
-        <li class="item"><router-link to="/">首页</router-link></li>
-        <li class="item"><router-link to="/blog">文章</router-link></li>
-        <li class="item"><router-link to="/project">项目</router-link></li>
-        <li class="item"><router-link to="/about">关于</router-link></li>
-      </ul>
-    </nav>
+    <MainNav></MainNav>
   </div>
 </template>
 
 <script>
+import MainNav from './common/MainNav'
 export default {
   name: 'MainPage',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      English_Name: 'Dear Rebecca',
+      Chinese_Name: '吴雨桐'
     }
+  },
+  components: {
+    MainNav
   }
 }
 </script>

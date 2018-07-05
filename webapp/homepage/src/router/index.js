@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainPage from '@/components/MainPage'
-import Blog from '@/components/Blog'
-import About from '@/components/About'
-import Test from '@/components/article/Test'
-import Test2 from '@/components/article/Test2'
+import MainPage from '@/view/MainPage'
+import Blog from '@/view/Blog'
+import About from '@/view/About'
 
 Vue.use(Router)
 
@@ -20,14 +18,7 @@ export default new Router({
       name: 'Blog',
       component: Blog,
       children: [
-        {
-          path: '/blog/test1',
-          component: Test
-        },
-        {
-          path: '/blog/test2',
-          component: Test2
-        }
+        
       ]
     },
     {
