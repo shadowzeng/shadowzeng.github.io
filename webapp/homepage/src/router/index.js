@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import MainPage from '@/components/MainPage'
 import Blog from '@/components/Blog'
 import About from '@/components/About'
+import Test from '@/components/article/Test'
+import Test2 from '@/components/article/Test2'
 
 Vue.use(Router)
 
@@ -16,7 +18,17 @@ export default new Router({
     {
       path: '/blog',
       name: 'Blog',
-      component: Blog
+      component: Blog,
+      children: [
+        {
+          path: '/blog/test1',
+          component: Test
+        },
+        {
+          path: '/blog/test2',
+          component: Test2
+        }
+      ]
     },
     {
       path: '/about',

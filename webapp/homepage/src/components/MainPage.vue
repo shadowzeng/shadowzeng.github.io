@@ -46,30 +46,7 @@ img {
 h1, h2 {
   font-weight: normal;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-}
-li:after {
-  content: '|';
-  font-size: 12px;
-  color: #ccc;
-  width: 20px;
-  display: inline-block;
-}
-li:last-of-type:after {
-  content: '';
-  width: 0;
-}
-a {
-  font-size: 13px;
-  text-decoration: none;
-  color: #6b6882;
-  transition: all 0.4s;
-}
+
 hr {
   max-width: 400px;
   width: 40%;
