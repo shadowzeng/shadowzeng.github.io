@@ -17,9 +17,6 @@
         <li><router-link to="/blog/test2">测试文章2</router-link></li>
       </ul>
     </div>
-    <div class="blog-content">
-      <router-view></router-view>
-    </div>
   </div>
 </template>
 
