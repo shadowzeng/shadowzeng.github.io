@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainPage from '@/view/MainPage'
-import Blog from '@/view/Blog'
 import About from '@/view/About'
 
 Vue.use(Router)
@@ -16,10 +15,18 @@ export default new Router({
     {
       path: '/blog',
       name: 'Blog',
-      component: Blog,
-      children: [
-        
-      ]
+      component: resolve => require(['@/view/Blog'], resolve)
+      // ,
+      // children: [
+      //   {
+      //     path: '/readBlog',
+      //     component: resolve => require(['@/view/Blog/BlogRead'], resolve)
+      //   }
+      // ]
+    },
+    {
+      path: '/readBlog',
+      component: resolve => require(['@/view/Blog/BlogRead'], resolve)
     },
     {
       path: '/about',

@@ -5,7 +5,7 @@
     </a>
     <h2>{{English_Name}}</h2>
     <h3>{{Chinese_Name}}</h3>
-    <hr>
+    <hr class="home-hr">
     <MainNav></MainNav>
   </div>
 </template>
@@ -45,7 +45,7 @@ h1, h2 {
   font-weight: normal;
 }
 
-hr {
+.home-hr {
   max-width: 400px;
   width: 40%;
   height: 1px;

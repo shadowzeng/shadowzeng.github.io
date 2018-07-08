@@ -5,20 +5,18 @@
     </div>
     <hr>
     <div class="blog-list">
-      <ul>
-        <li><router-link to="/blog/test1">测试文章1</router-link></li>
-        <li><router-link to="/blog/test2">测试文章2</router-link></li>
-      </ul>
+      <BlogList/>
     </div>
   </div>
 </template>
 
 <script>
 import MainNav from './common/MainNav'
+import BlogList from './Blog/BlogList'
 export default {
     name: 'Blog',
     components:{
-      MainNav
+      MainNav,BlogList
     }
 }
 </script>
