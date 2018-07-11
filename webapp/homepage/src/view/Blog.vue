@@ -32,6 +32,9 @@ hr {
   height: 1px;
   border: none;
   background-image: -webkit-linear-gradient(0deg, transparent, #d5d5d5, transparent);
+  margin:auto;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 .blog-list {
     width:300px;

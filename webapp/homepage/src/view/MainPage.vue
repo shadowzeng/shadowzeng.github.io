@@ -3,8 +3,8 @@
     <a class="avatar" href="/">
       <img src="../assets/avatar.jpg">
     </a>
-    <h2>{{English_Name}}</h2>
-    <h3>{{Chinese_Name}}</h3>
+    <h2 class="en-name">{{English_Name}}</h2>
+    <h3 class="ch-name">{{Chinese_Name}}</h3>
     <hr class="home-hr">
     <MainNav></MainNav>
   </div>
@@ -44,12 +44,21 @@ img {
 h1, h2 {
   font-weight: normal;
 }
-
+.en-name {
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.ch-name {
+  margin-top:14px;
+  margin-bottom:14px;
+}
 .home-hr {
   max-width: 400px;
   width: 40%;
   height: 1px;
   border: none;
   background-image: -webkit-linear-gradient(0deg, transparent, #d5d5d5, transparent);
+  margin:auto;
+  margin-bottom:10px
 }
 </style>

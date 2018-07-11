@@ -37,7 +37,7 @@ export default {
       //存一下数据，重复切换免去不停请求初始页面数据
       //同时成立原因，有可能在标签页刷新页面，再进入最新文章就没有文章列表数据
       //所以同时成立
-      if (this.articleList && this.labels) {
+      if (this.articleList) {
           this.showLoad = true
           this.$nextTick(() => {
               //this.initScroll()

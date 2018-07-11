@@ -1,8 +1,8 @@
 <template>
   <div class="blog-show">
       <div class="blog-header">
-        <p @click="read(data.id)">{{data.title}}</p>
-        <span>{{data.date}}</span>
+        <p class="blog-title" @click="read(data.id)">{{data.title}}</p>
+        <span class="blog-date">{{data.date}}</span>
       </div>
   </div>
 </template>
@@ -27,3 +27,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .blog-title {
+    display:inline;
+    cursor:pointer;
+  }
+  .blog-date {
+    float:right;
+  }
+</style>

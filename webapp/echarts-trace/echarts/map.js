@@ -54,7 +54,12 @@ define(["durandal/app","durandal/composition","knockout","i18nCommon","echarts",
                     mapStyle: bdmapstyle
                 },
                 tooltip : {
-                    trigger: 'item'
+                    trigger: 'item',
+                    enterable:true,
+                    hideDelay:10000,
+                    formatter:function(params,ticket,callback){
+                        return '所属企业：'+params.data.groupName+'<br />    车牌号：'+'<a href="/symbol/patrol.png">'+params.data.objectName+'</a>';
+                    }
                 },
                 series: []
             };debugger
