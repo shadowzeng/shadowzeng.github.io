@@ -1,19 +1,3 @@
-require.config({
-    /** lib库目录 */
-    baseUrl: "../",
-    /** 如果调试，地址上添加时间戳 */
-    urlArgs: "bust="+(new Date()).getTime(),
-    /** 超时时间 */
-    waitSeconds: 30,
-    /** 模块路径 */
-    paths: {
-		  
-    },
-    shim: {
-       	
-    }
-});
-
 define([
   "dojo/has",
   "esri/config",

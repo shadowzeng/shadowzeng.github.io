@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 .navi {
   margin-top:150px;
 }
