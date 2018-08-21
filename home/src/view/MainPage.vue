@@ -16,8 +16,8 @@ export default {
   name: 'MainPage',
   data () {
     return {
-      English_Name: 'Dear Rebecca',
-      Chinese_Name: '吴雨桐'
+      English_Name: '_shadowzeng',
+      Chinese_Name: '梧桐'
     }
   },
   components: {
