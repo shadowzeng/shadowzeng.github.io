@@ -2,6 +2,7 @@ function Animal(){
     this.species = "动物";
 }
 function Cat(name,color){
+    debugger
     this.name = name;
     this.color = color;
 }
