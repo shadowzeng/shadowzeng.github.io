@@ -4,7 +4,7 @@
 
 安装后到bin目录下输入如下命令安装windows服务（事先创建一个`data`和`log`目录）
 ```
-mongod.exe -install --dbpath=D:\MongoDB\Server\3.2\data\db --logpath=D:\MongoDB\Server\3.2\data\log\log.log
+mongod.exe -install --dbpath=C:\MongoDB\Server\3.2\data --logpath=C:\MongoDB\Server\3.2\log\log.log
 ```
 
 然后去启动服务（4.0版本可以在安装时附带安装windows服务）
@@ -17,7 +17,7 @@ mongod.exe -install --dbpath=D:\MongoDB\Server\3.2\data\db --logpath=D:\MongoDB\
 
 先把之前的data目录删掉（先关闭服务），然后重新建data目录，再在bin下输入命令
 ```
-mongod  --storageEngine mmapv1 --dbpath <数据目录>
+mongod --storageEngine mmapv1 --dbpath=C:\MongoDB\Server\3.2\data
 ```
 
 然后再去启动服务，结果启动失败。。

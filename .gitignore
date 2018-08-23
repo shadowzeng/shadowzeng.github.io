@@ -167,6 +167,7 @@ pip-log.txt
 rat.iml
 
 node_modules
+dist
 
 todo
 **/*.log
