@@ -6,23 +6,26 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var blogRouter = require('./routes/blog');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views')); // 设置views文件夹为存放视图（模板文件）的目录
+app.set('view engine', 'jade');   // 设置视图模板引擎为jade
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));   // 加载日志中间件
+app.use(express.json());   // 
+app.use(express.urlencoded({ extended: false }));  // 加载解析urlencode请求体的中间件
+app.use(cookieParser());   // 加载解析cookie的中间件
+app.use(express.static(path.join(__dirname, 'public')));  // 设置public为存放静态文件的目录
 
+// router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/blog', blogRouter);
 
-// catch 404 and forward to error handler
+// 捕获404错误并转发到错误处理器
 app.use(function(req, res, next) {
   next(createError(404));
 });
