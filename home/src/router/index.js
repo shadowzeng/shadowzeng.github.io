@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainPage from '@/view/MainPage'
-import About from '@/view/About'
+import MainPage from '@/views/MainPage'
+import About from '@/views/about/About'
 import { resolve } from 'path';
 
 Vue.use(Router)
@@ -14,20 +14,24 @@ export default new Router({
       component: MainPage
     },
     {
+      path: '/test',
+      component: r => require.ensure([], () => r(require('@/views/TestPage')), 'TestPage')
+    },
+    {
       path: '/blog',
       name: 'Blog',
-      component: resolve => require(['@/view/Blog'], resolve)
+      component: resolve => require(['@/views/blog/Blog'], resolve)
       // ,
       // children: [
       //   {
       //     path: '/readBlog',
-      //     component: resolve => require(['@/view/Blog/BlogRead'], resolve)
+      //     component: resolve => require(['@/views/Blog/BlogRead'], resolve)
       //   }
       // ]
     },
     {
       path: '/readBlog',
-      component: resolve => require(['@/view/blog/BlogRead'], resolve)
+      component: resolve => require(['@/views/blog/BlogRead'], resolve)
     },
     {
       path: '/about',
@@ -37,7 +41,7 @@ export default new Router({
     {
       path: '/manage',
       name: 'Manage',
-      component: resolve => require(['@/view/manage/Manage'], resolve)
+      component: resolve => require(['@/views/manage/Manage'], resolve)
     }
   ]
 })

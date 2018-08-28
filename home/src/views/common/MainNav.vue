@@ -6,6 +6,7 @@
         <li class="item"><router-link to="/blog">文章</router-link></li>
         <li class="item"><router-link to="/project">项目</router-link></li>
         <li class="item"><router-link to="/about">关于</router-link></li>
+        <li class="item"><router-link to="/test">测试</router-link></li>
       </ul>
     </nav>
   </div>

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import MainNav from './common/MainNav'
-import BlogList from './Blog/BlogList'
+import MainNav from '../common/MainNav'
+import BlogList from './BlogList'
 export default {
     name: 'Blog',
     components:{
