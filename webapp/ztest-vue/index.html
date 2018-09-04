@@ -6,7 +6,11 @@
     <title>vue-test</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <span>{{ttt}}</span>
+      <li v-for="item in zengk">{{item}}</li>
+      <button @click="test()">test</button>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>

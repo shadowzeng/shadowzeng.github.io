@@ -5,11 +5,23 @@ import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
-
+debugger
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+  data: {
+    ttt:2,
+    cc:{text:'x'},
+    zengk:[11,22,33]
+  },
+  methods: {
+    test: function(){
+      debugger
+      this.ttt = 4;
+      this.zengk.splice(1,1,99);
+    }
+  }
+  //router,
+  //components: { App },
+  //template: '<App/>'
 })
