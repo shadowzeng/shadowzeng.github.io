@@ -22,4 +22,11 @@ code {
     font-size: 80%;
     font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
 }
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+a {
+    cursor: pointer;
+}
 </style>

@@ -15,7 +15,7 @@ export default new Router({
     },
     {
       path: '/test',
-      component: r => require.ensure([], () => r(require('@/views/TestPage')), 'TestPage')
+      component: r => require.ensure([], () => r(require('@/views/blog/BlogItem')), 'TestPage')
     },
     {
       path: '/blog',

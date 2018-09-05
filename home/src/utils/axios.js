@@ -1,22 +1,23 @@
-//axios——设置请求
-import iView from 'iview'
+//import iView from 'iview'
 import axios from 'axios'
-import { Message } from 'iview'
-import store from '@/vuex'
-import app from '../main.js'
+//import { Message } from 'iview'
+//import store from '@/vuex'
+//import app from '../main.js'
 var accessToken = localStorage.getItem('token')
 
 const http = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: 'http://118.25.41.250:3000/',
     timeout: 8000,
     data: {},
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     },
 })
+
+/*
 const qs = require('querystring')
 var oldConfig = null
-    // 请求前
+// 请求前
 http.interceptors.request.use(config => {
     if (config.url.indexOf('login') < 1 && !localStorage.getItem('adminName') && !localStorage.getItem('adminPassword')) {
         if (config.method == 'post' && localStorage.getItem('visit') && localStorage.getItem('visitPassword')) {
@@ -68,5 +69,6 @@ http.interceptors.response.use(res => {
     store.state.loadErr = true
     return Promise.reject(err);
 })
+*/
 
 export default http

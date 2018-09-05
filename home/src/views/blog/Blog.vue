@@ -47,10 +47,4 @@ hr {
   list-style-type: none;
   padding: 5px;
 }
-.blog-list a {
-  font-size: 14px;
-  text-decoration: none;
-  color: #6b6882;
-  transition: all 0.4s;
-}
 </style>
