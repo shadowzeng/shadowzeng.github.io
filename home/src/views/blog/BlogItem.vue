@@ -18,12 +18,12 @@
     methods: {
       readBlog: function(id){
         debugger
-        // axios.get('http://cdn.bootcss.com/vue/1.0.25/vue.js').then(res=>{
-        //   debugger
-        // });
-        jsonp('http://118.25.41.250:3000/blog/getAll',null,(err,data)=>{
+        axios.get('http://118.25.41.250:3000/blog/getAll').then(res=>{
           debugger
         });
+        // jsonp('http://118.25.41.250:3000/jsonptest',null,(err,data)=>{
+        //   debugger
+        // });
       }
     }
   }

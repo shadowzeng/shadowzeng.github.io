@@ -10,6 +10,16 @@ var blogRouter = require('./routes/blog');
 
 var app = express();
 
+// 允许/blog跨域请求（注意：需要写在app.use('/blog',..)之前）
+app.all('/blog/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    if (req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
+    else next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // 设置views文件夹为存放视图（模板文件）的目录
 app.set('view engine', 'jade');   // 设置视图模板引擎为jade
@@ -24,16 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));  // 设置public为存�
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/blog', blogRouter);
-
-// 允许/blog跨域请求
-app.all('/blog', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
-    if (req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
-    else next();
-});
 
 // 捕获404错误并转发到错误处理器
 app.use(function(req, res, next) {
