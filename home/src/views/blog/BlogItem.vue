@@ -18,7 +18,7 @@
     methods: {
       readBlog: function(id){
         debugger
-        // axios.get('/blog/getAll').then(res=>{
+        // axios.get('http://cdn.bootcss.com/vue/1.0.25/vue.js').then(res=>{
         //   debugger
         // });
         jsonp('http://118.25.41.250:3000/blog/getAll',null,(err,data)=>{
