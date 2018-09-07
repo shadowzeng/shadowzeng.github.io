@@ -1,6 +1,6 @@
 <template>
   <div class="blog-list">
-    <BlogItem v-for="item,index in blogList" :key="index" :blogItem="item"></BlogItem>
+    <BlogItem v-for="item,index in blogList" :key="index" :blogItem="item" @child-event="recv"></BlogItem>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
     }
   },
   async mounted() {debugger
+      sessionStorage.setItem('name','zeng');
       //存一下数据，重复切换免去不停请求初始页面数据
       //同时成立原因，有可能在标签页刷新页面，再进入最新文章就没有文章列表数据
       //所以同时成立
@@ -76,6 +77,9 @@ export default {
       } */
   },
   methods: {
+        recv: function(data){
+            debugger
+        }
         /*
         ...mapMutations(['articleListData', 'lablesData','totalData']),
         change(current) {

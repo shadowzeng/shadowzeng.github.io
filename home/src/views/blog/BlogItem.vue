@@ -10,7 +10,6 @@
 <script>
   import Label from '../common/Label'
   import axios from '../../utils/axios'
-  import jsonp from 'jsonp'
 
   export default {
     components: {Label},
@@ -18,12 +17,11 @@
     methods: {
       readBlog: function(id){
         debugger
+        var a = sessionStorage.getItem('name');
+        this.$emit('child-event',{name:'zeng'});
         axios.get('http://118.25.41.250:3000/blog/getAll').then(res=>{
           debugger
         });
-        // jsonp('http://118.25.41.250:3000/jsonptest',null,(err,data)=>{
-        //   debugger
-        // });
       }
     }
   }

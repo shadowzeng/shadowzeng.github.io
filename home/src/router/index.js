@@ -42,6 +42,10 @@ export default new Router({
       path: '/manage',
       name: 'Manage',
       component: resolve => require(['@/views/manage/Manage'], resolve)
+    },
+    {
+      path: '/login',
+      component: resolve => require(['@/views/manage/Login'], resolve)
     }
   ]
 })

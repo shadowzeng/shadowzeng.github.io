@@ -3,7 +3,7 @@
     <a class="avatar" href="/">
       <img src="../assets/avatar.jpg">
     </a>
-    <h2 class="en-name">{{English_Name}}</h2>
+    <h2 class="en-name" @click="manager">{{English_Name}}</h2>
     <h3 class="ch-name">{{Chinese_Name}}</h3>
     <hr class="home-hr">
     <MainNav></MainNav>
@@ -14,14 +14,19 @@
 import MainNav from './common/MainNav'
 export default {
   name: 'MainPage',
+  components: { MainNav },
   data () {
     return {
       English_Name: '_shadowzeng',
       Chinese_Name: '梧桐'
     }
   },
-  components: {
-    MainNav
+  methods: {
+    manager: function() {
+      this.$router.push({
+        path: '/login'
+      });
+    }
   }
 }
 </script>
