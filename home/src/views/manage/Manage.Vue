@@ -39,13 +39,13 @@ export default {
   
     left:30px;
     top:30px;
-
+    position: relative;
   }
   .P {
     width: 80px;
     height: 50px;
     background: green;
-
+    position: absolute;
     margin: auto 0;
     top: 0;
     bottom: 0;
