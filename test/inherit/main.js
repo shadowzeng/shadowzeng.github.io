@@ -46,7 +46,6 @@ function enableClassExtend(RootClass){
         zrUtil.inherits(ExtendedClass, this);
         ExtendedClass.superClass = superClass;
 
-        ExtendedClass.prototype = this.prototype;
         return ExtendedClass;
     }
 }
