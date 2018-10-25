@@ -4,14 +4,18 @@ var mongoUtils = require('../dao/mongodb');
 
 mongoUtils.connect();
 
-router.post('/save', function(req, res, next){
+/**
+ * 保存文章
+ */
+router.post('/saveBlog', function(req, res, next){
     if (req && req.body){
         console.log(req.body);
         mongoUtils.save(req.body);
+        res.send('ok');  // 需要显示send返回？否则请求一直pending
     }
 });
 
-router.get('/getAll', function(req, res, next){
+router.get('/getAllBlog', function(req, res, next){
     mongoUtils.findAll(function(data){
         res.send(data);
     });

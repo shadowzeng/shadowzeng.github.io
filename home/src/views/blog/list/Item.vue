@@ -8,20 +8,21 @@
 </template>
 
 <script>
-  import Label from '../common/Label'
-  import axios from '../../utils/axios'
+  import Label from '@/views/common/Label'
+  //import axios from '../../utils/axios'
 
   export default {
+    name:'BlogItem',
     components: {Label},
     props: ['blogItem'],
     methods: {
       readBlog: function(id){
-        debugger
-        var a = sessionStorage.getItem('name');
-        this.$emit('child-event',{name:'zeng'});
-        axios.get('http://118.25.41.250:3000/blog/getAll').then(res=>{
-          debugger
-        });
+        this.$router.push({
+          path: '/blog/read',
+          query: {
+            id
+          }
+        })
       }
     }
   }

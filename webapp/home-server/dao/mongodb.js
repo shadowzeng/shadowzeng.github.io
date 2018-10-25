@@ -2,7 +2,9 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var MongoConn = null;
 
-const DB_URL = 'mongodb://118.25.41.250:27017';
+const DB_URL = 'mongodb://localhost:27017';
+const DB_NAME = 'me';
+const COLLEC_ARTICLE = 'blog';
 
 // MongoClient.connect(url, function(err, db){
 //     assert.equal(null, err);
@@ -26,13 +28,13 @@ module.exports = {
         console.log('MongoDB连接关闭');
     },
     save: function(doc){
-        MongoConn.db('blog').collection('article').insertOne(doc,function(err,res){
+        MongoConn.db(DB_NAME).collection(COLLEC_ARTICLE).insertOne(doc,function(err,res){
             if (err) throw err;
             console.log('插入一条文档');
         });
     },
     findAll: function(callback){
-        MongoConn.db('blog').collection('article').find({}).toArray(function(err,res){
+        MongoConn.db(DB_NAME).collection(COLLEC_ARTICLE).find({}).toArray(function(err,res){
             if (err) throw err;
             callback(res);
         });

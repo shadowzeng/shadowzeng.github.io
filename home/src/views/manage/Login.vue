@@ -9,20 +9,26 @@
 </template>
 
 <script>
-  import axios from '../../utils/axios'
+  //import axios from '../../utils/axios'
 
   export default {
     data() {
       return {
-        username:'22',
-        password:'22'
+        username:'zeng',
+        password:'123'
       }
     },
     methods: {
       login: function(){
-        axios.get('/login',{params:{username,password:password}}).then(res => {
-          debugger
-        });
+        // axios.get('/login',{params:{username,password:password}}).then(res => {
+        //   debugger
+        // });
+        debugger
+        if (this.username=='zeng'&&this.password=="123") {
+          this.$router.push({
+            path: '/manage'
+          });
+        }
       }
     }
   }

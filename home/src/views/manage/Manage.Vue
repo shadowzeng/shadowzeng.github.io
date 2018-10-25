@@ -1,12 +1,15 @@
 <template>
-    <div class="A">
-      <div class="P"></div>
-
-      <!--
-      <textarea name="" id="" rows="10" v-model="mdContent"></textarea>
-      <button v-on:click="save()">保存</button>
-      <div>{{message}}</div>
-      <button @click="test()">test</button>  -->
+    <div class="blog-manage">
+      <div class="manage-header"><span>文章管理</span></div>
+      <div class="manage-side">
+          <ul>
+              <li v-for="item in opers" v-bind:key="item.id">
+                  <router-link :to="item.value">{{item.name}}</router-link></li>
+          </ul>
+      </div>
+      <div class="manage-main">
+          <router-view></router-view>
+      </div>
     </div>
 </template>
 
@@ -15,8 +18,10 @@
 export default {
     data(){
         return {
-            mdContent: '',
-            message: 'hello'
+            opers: [
+                {id:1,name:'新建',value:'/manage/newblog'},
+                {id:2,name:'修改',value:'/manage/modblog'}
+            ]
         }
     },
     methods: {
@@ -32,23 +37,20 @@ export default {
 </script>
 
 <style lang="">
-  .A {
-    width:500px;
-    height: 300px;
-    border: 2px solid black;
-  
-    left:30px;
-    top:30px;
-    position: relative;
+  .manage-header {
+      height: 30px;
+      background: grey;
   }
-  .P {
-    width: 80px;
-    height: 50px;
-    background: green;
-    position: absolute;
-    margin: auto 0;
-    top: 0;
-    bottom: 0;
+  .manage-side {
+      width: 100px;
+      background: green;
+      float: left;
   }
-
+  .manage-btn {
+      display: block;
+  }
+  .manage-main {
+      margin-left: 100px;
+      padding: 20px;
+  }
 </style>

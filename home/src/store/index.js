@@ -1,14 +1,11 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import {mainNavRoutes} from '../router'
+
 Vue.use(Vuex)
 
 const state = {
-    loading: false,
-    articleList: null,
-    aboutMe: null,
-    labels: null,
-    loadErr: false,
-    total: 0
+    mainNavData: mainNavRoutes
 }
 
 const mutations = {

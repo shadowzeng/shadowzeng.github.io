@@ -1,24 +1,17 @@
 <template>
   <div class="blog-list">
-    <BlogItem v-for="item,index in blogList" :key="index" :blogItem="item" @child-event="recv"></BlogItem>
+    <item v-for="item,index in blogList" :key="index" :blogItem="item" @child-event="recv"></item>
   </div>
 </template>
 
 <script>
-import BlogItem from './BlogItem'
-import axios from 'axios'
-import {mapState,mapMutations} from 'vuex'
+import Item from './Item'
 
 export default {
-  components: {BlogItem},
-  computed: mapState(['articleList', 'labels','total']),
+  components: {Item},
   data() {
     return {
-      showIndex: 1,
-      current: 1,
-      pageSize: 15,
-      showLoad: false,
-      blogList:[
+      blogList: [
         {
           blogUid: 1,
           blogTitle:"测试文章1",
@@ -36,11 +29,11 @@ export default {
           blogTitle:"测试文章3",
           labels:[{labelId:5,labelText:'linux'}],
           date:"2018-09-05 16:06:00"
-        },
+        }
       ]
     }
   },
-  async mounted() {debugger
+  async mounted() {
       sessionStorage.setItem('name','zeng');
       //存一下数据，重复切换免去不停请求初始页面数据
       //同时成立原因，有可能在标签页刷新页面，再进入最新文章就没有文章列表数据

@@ -13,10 +13,9 @@
     </div>
 </template>
 <script>
-import MainNav from '../common/MainNav'
 import axios from 'axios'
 import Vue from 'vue'
-import Marked from '../../utils/marked'
+import Marked from '@/utils/marked'
 Vue.use(Marked);
 export default {
     data() {
@@ -25,7 +24,6 @@ export default {
             loadDone: false
         }
     },
-    components:{MainNav},
     mounted() {
         axios.get('../static/testblog.json', {
             params: {
