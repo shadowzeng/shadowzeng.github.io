@@ -1,0 +1,6 @@
+- Angular 8 Snippets
+- Better Jinja
+- Git History
+- Terraform
+- Trailing Spaces
+- TSLint

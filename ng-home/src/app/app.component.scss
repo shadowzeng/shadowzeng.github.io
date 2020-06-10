@@ -1,0 +1,6 @@
+@use '../assets/styles/base';
+
+code {
+    font-family: base.$code-font-family;
+    font-size: 12px;
+}
