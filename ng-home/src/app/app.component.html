@@ -1,2 +1,7 @@
-<a class='root' (click)='getArticle()'>rxjs</a>
-<div #doc [innerHTML]='a'></div>
+<ul class='article-list'>
+    <li *ngFor='let article of articles' (click)='onClick(article.path)'> {{ article.name }} </li>
+</ul>
+
+<div class='article-content'>
+    <app-article [path]='path'></app-article>
+</div>

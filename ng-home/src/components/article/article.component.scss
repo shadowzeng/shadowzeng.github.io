@@ -1,0 +1,18 @@
+
+@use '../../assets/styles/base';
+
+pre {
+    background-color: #f6f8fa;
+    padding: 10px;
+    border-radius: 2px;
+    margin: 0 10px;
+}
+
+code {
+    font-family: base.$code-font-family;
+    font-size: 12px;
+}
+
+img {
+    width: 100%;
+}

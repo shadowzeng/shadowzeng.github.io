@@ -1,6 +1,21 @@
 @use '../assets/styles/base';
 
-code {
-    font-family: base.$code-font-family;
-    font-size: 12px;
+:host {
+    display: flex;
+}
+
+.article-list {
+    width: 100px;
+
+    li {
+        cursor: pointer;
+        color: #8276e2;
+    }
+    li:hover {
+        color: #6c65a5;
+    }
+}
+
+.article-content {
+    width: calc(100% - 100px);
 }
