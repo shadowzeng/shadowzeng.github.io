@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "for shadowzeng",
   "author": "shadowzeng",
-  "scripts": {},
+  "scripts": {
+    "config": "git config include.path ../.gitconfig"
+  },
   "devDependencies": {
     "echarts": "4.0.4",
     "webpack-cli": "^2.1.3"
