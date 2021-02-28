@@ -21,7 +21,7 @@
     "@angular/router": "~9.0.2",
     "@types/marked": "^0.7.4",
     "global": "^4.4.0",
-    "highlight.js": "^10.0.3",
+    "highlight.js": "^10.4.1",
     "marked": "^1.1.0",
     "mindap": "^0.0.1",
     "rxjs": "~6.5.4",
