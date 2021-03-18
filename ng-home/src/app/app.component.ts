@@ -1,27 +1,10 @@
-import { Component, AfterViewInit } from '@angular/core'
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
-    public articles = [
-        {
-            name: 'test',
-            path: './docs/test.md',
-        },
-        {
-            name: 'rxjs',
-            path: './docs/rxjs.md',
-        },
-    ]
-
-    public path = ''
-
-    public ngAfterViewInit(): void {}
-
-    public onClick(path: string): void {
-        this.path = path
-    }
+export class AppComponent {
+  title = 'ng-home';
 }
