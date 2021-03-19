@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,6 +14,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

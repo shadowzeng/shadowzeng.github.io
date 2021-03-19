@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-mindmap-editor',
-  templateUrl: './mindmap-editor.component.html',
-  styleUrls: ['./mindmap-editor.component.scss']
+  templateUrl: './mindmap-editor.template.html',
+  styleUrls: ['./mindmap-editor.style.scss']
 })
 export class MindmapEditorComponent implements OnInit {
 
