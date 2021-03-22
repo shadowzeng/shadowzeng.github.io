@@ -10,6 +10,7 @@ export class MindmapViewerComponent implements OnInit {
 
   constructor(private readonly _http: HttpClient) { }
 
+
   ngOnInit(): void {
     // @ts-ignore
     const map = mindap.create('editor-map', {rootNode: {name: 'Root'}})
