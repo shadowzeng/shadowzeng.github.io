@@ -1,0 +1,17 @@
+{
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {"before": ["j", "k"], "after": ["<esc>"]},
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+        "javascript"
+    ],
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+}

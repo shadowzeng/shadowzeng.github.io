@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing'
 
-import { MindmapEditorComponent } from './mindmap-editor.component';
+import {MindmapEditorComponent} from './mindmap-editor.component'
 
 describe('MindmapEditorComponent', () => {
-  let component: MindmapEditorComponent;
-  let fixture: ComponentFixture<MindmapEditorComponent>;
+  let component: MindmapEditorComponent
+  let fixture: ComponentFixture<MindmapEditorComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ MindmapEditorComponent ]
     })
-    .compileComponents();
-  });
+    .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MindmapEditorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(MindmapEditorComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core'
+import {CommonModule} from '@angular/common'
 
-import { MindmapEditorRoutingModule } from './mindmap-editor-routing.module';
-import { MindmapEditorComponent } from './mindmap-editor.component';
+import {MindmapEditorRoutingModule} from './mindmap-editor-routing.module'
+import {MindmapEditorComponent} from './mindmap-editor.component'
 
 
 @NgModule({
