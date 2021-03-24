@@ -1,6 +1,8 @@
 - Angular 8 Snippets
 - Better Jinja
 - Git History
+- GitLens
 - Terraform
 - Trailing Spaces
 - TSLint
+- EditorConfig for VS Code
