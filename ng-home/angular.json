@@ -34,14 +34,9 @@
             "styles": ["src/styles.scss"],
             "scripts": [
               {
-                "input": "./src/mindap.js",
-                "inject": false,
-                "bundleName": "mindap"
-              },
-              {
                 "input": "./node_modules/d3/dist/d3.min.js",
                 "inject": false,
-                "bundleName": "d3"
+                "bundleName": "d3.min"
               }
             ]
           },
