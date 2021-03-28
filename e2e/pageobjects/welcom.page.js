@@ -11,6 +11,10 @@ class LoginPage extends Page {
     get inputPassword () { return $('#password') }
     get btnSubmit () { return $('button[type="submit"]') }
 
+    get text() {
+        return $('a')
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password

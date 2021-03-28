@@ -17,7 +17,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './e2e/**/*.e2e.js'
+        './e2e/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -91,6 +91,8 @@ exports.config = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     baseUrl: 'http://localhost',
+    port: 8086,
+    path: './',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
