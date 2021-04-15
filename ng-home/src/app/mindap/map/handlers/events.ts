@@ -25,8 +25,8 @@ export default class Events {
      * @param {Event} event
      * @param parameters
      */
-    public call(event: Event, ...parameters): void {
-        return this.dispatcher.call(event, ...parameters)
+    public call(event: Event, that: any, ...parameters): void {
+        return this.dispatcher.call(event, that, ...parameters)
     }
 
     /**
@@ -55,6 +55,7 @@ export enum Event {
     redo = 'mindap-redo',
     exportJSON = 'mindap-export-json',
     exportImage = 'mindap-export-image',
+    zoom = 'mindap-zoom',
     zoomIn = 'mindap-zoom-in',
     zoomOut = 'mindap-zoom-out',
     nodeSelect = 'mindap-node-select',

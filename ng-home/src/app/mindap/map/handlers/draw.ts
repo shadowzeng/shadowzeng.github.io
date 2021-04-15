@@ -252,7 +252,7 @@ export default class Draw {
             .attr('cy', cy)
             .attr('r', r)
             .on('click', () => {
-                this.map.events.call(Event.nodePayloadSelect, node.payload)
+                this.map.events.call(Event.nodePayloadSelect, undefined, node.dom, node.payload)
             })
     }
 

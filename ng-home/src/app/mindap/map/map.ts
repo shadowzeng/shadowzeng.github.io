@@ -108,28 +108,28 @@ export class Map {
 }
 
 export interface MindapInstance {
-    on: Function;
-    remove: Function;
-    new: Function;
-    updateOptions: Function,
-    exportAsJSON: Function;
-    exportAsImage: Function;
-    history: Function;
-    undo: Function;
-    redo: Function;
-    zoomIn: Function;
-    zoomOut: Function;
-    center: Function;
-    addNode: Function;
-    selectNode: Function;
-    editNode: Function;
-    deselectNode: Function;
-    nodeChildren: Function;
-    updateNode: Function;
-    removeNode: Function;
-    copyNode: Function;
-    cutNode: Function;
-    pasteNode: Function;
+    on: (event: string, callback: Function) => void
+    remove: Function
+    new: Function
+    updateOptions: Function
+    exportAsJSON: Function
+    exportAsImage: Function
+    history: Function
+    undo: Function
+    redo: Function
+    zoomIn: Function
+    zoomOut: Function
+    center: Function
+    addNode: Function
+    selectNode: Function
+    editNode: Function
+    deselectNode: Function
+    nodeChildren: Function
+    updateNode: Function
+    removeNode: Function
+    copyNode: Function
+    cutNode: Function
+    pasteNode: Function
 }
 
 export interface DomElements {
