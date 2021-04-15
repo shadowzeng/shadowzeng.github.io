@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core'
+import * as qiniu from 'qiniu-js'
 
 import {create, MindapInstance} from '../mindap'
 
@@ -18,6 +19,13 @@ export class MindmapEditorComponent implements OnInit {
 
   public onRemoveNode(): void {
     this._map.removeNode()
+  }
+
+  public onDownload(): void {
+    const data = this._map.exportAsJSON()
+    const json = JSON.stringify(data)
+    const blob = new Blob([json], {type: 'application/json'})
+    // qiniu.upload(blob, )
   }
 
   private _map!: MindapInstance
