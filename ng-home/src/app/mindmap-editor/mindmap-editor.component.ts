@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core'
 import * as qiniu from 'qiniu-js'
 
-import {create, MindapInstance} from '../mindap'
+import {create, MindapInstance, Node} from '../mindap'
+import {PopupConfig, PopupService} from '../popup'
+import {NodeContentEditComponent, NODE_CONTENT_EDIT_TOKEN} from './node-content-edit'
 
 @Component({
   selector: 'app-mindmap-editor',
@@ -9,8 +11,16 @@ import {create, MindapInstance} from '../mindap'
   styleUrls: ['./mindmap-editor.style.scss']
 })
 export class MindmapEditorComponent implements OnInit {
+  private _map!: MindapInstance
+
+  public constructor(private readonly _popupService: PopupService<NodeContentEditComponent>) {}
+
   public ngOnInit(): void {
     this._map = create('editor-map', {rootNode: {name: 'Node'}})
+
+    this._map.on('nodeContentEdit', (node: Node) => {
+      this._openContentEditor(node)
+    })
   }
 
   public onAddNode(): void {
@@ -24,9 +34,21 @@ export class MindmapEditorComponent implements OnInit {
   public onDownload(): void {
     const data = this._map.exportAsJSON()
     const json = JSON.stringify(data)
+    console.log(json)
     const blob = new Blob([json], {type: 'application/json'})
     // qiniu.upload(blob, )
   }
 
-  private _map!: MindapInstance
+  public _openContentEditor(node: Node): void {
+    const target = node.dom
+    const config: PopupConfig<NodeContentEditComponent, Node> = {
+      target,
+      component: NodeContentEditComponent,
+      token: NODE_CONTENT_EDIT_TOKEN,
+      data: node
+    }
+    this._popupService.show(config).detachments().subscribe(() => {
+      this._map.updateNodeContent()
+    })
+  }
 }

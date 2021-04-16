@@ -7,9 +7,8 @@ import {
 import {
     ComponentPortal,
     ComponentType,
-    PortalInjector,
 } from '@angular/cdk/portal'
-import {Injectable, InjectionToken, Injector, OnDestroy} from '@angular/core'
+import {Injectable, InjectionToken, StaticProvider, Injector, OnDestroy} from '@angular/core'
 import {Subscription} from 'rxjs'
 
 export interface PopupConfig<T, D> {
@@ -31,9 +30,10 @@ export class PopupService<T> implements OnDestroy {
         this._destroyPanel()
     }
 
-    public show<D>(config: PopupConfig<T, D>): void {
+    public show<D>(config: PopupConfig<T, D>): OverlayRef {
         this._targetElement = config.target
         this._attachOverlay<D>(config)
+        return this._overlayRef!
     }
 
     public updatePosition(): void {
@@ -65,10 +65,15 @@ export class PopupService<T> implements OnDestroy {
             return
 
         const component = config.component
-        const tokens = new WeakMap<InjectionToken<string>, D>([
-            [config.token, config.data],
-        ])
-        const injector = new PortalInjector(this._injector, tokens)
+        const providers: StaticProvider[] =[
+          {provide: OverlayRef, useValue: this._overlayRef},
+          {provide: config.token, useValue: config.data},
+        ]
+
+        const injector = Injector.create({
+          parent: this._injector,
+          providers,
+        })
         const portal = new ComponentPortal(component, undefined, injector)
         this._overlayRef.attach(portal)
     }

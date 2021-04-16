@@ -1,0 +1,9 @@
+<div class='markdown-editor-toolbar'>
+  <button mat-button (click)='onConfirm()'>OK</button>
+</div>
+<div class='markdown-editor-editing-area'>
+  <textarea class='editor-textarea' [formControl]='formControl'></textarea>
+</div>
+<div class='markdown-editor-preview-area'>
+  <app-markdown-viewer class='editor-viewer' [content]='editingContent'></app-markdown-viewer>
+</div>

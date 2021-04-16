@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.markdown-editor-toolbar {
+  height: 32px;
+  flex-basis: 100%;
+}
+
+.markdown-editor-editing-area {
+  height: calc(100% - 32px);
+  flex-basis: 50%;
+}
+.markdown-editor-preview-area {
+  height: calc(100% - 32px);
+  flex-basis: 50%;
+}
+
+.editor-textarea {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}

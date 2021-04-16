@@ -1,8 +1,17 @@
 :host {
     display: block;
-    height: calc(100% - 36px);
+    height: 100%;
+    position: relative;
 }
 
 .editor-map-container {
-    height: calc(100% - 40px);
+    height: 100%;
+}
+
+.editor-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: rgba(0, 0, 0, 0.6);
 }

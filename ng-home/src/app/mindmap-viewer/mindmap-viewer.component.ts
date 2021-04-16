@@ -4,14 +4,14 @@ import {Subject} from 'rxjs'
 import {throttleTime} from 'rxjs/operators'
 
 import {create} from '../mindap'
+import {PopupService, PopupConfig} from '../popup'
 import {NodeMoreComponent, NODE_MORE_CONTENT_TOKEN} from './node-more.componenet'
-import {PopupService, PopupConfig} from './popup.service'
 
 @Component({
   selector: 'app-mindmap-viewer',
   templateUrl: './mindmap-viewer.template.html',
   styleUrls: ['./mindmap-viewer.style.scss'],
-  providers: [PopupService],
+  // providers: [PopupService],
 })
 export class MindmapViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   private _mapZoom$ = new Subject<void>()

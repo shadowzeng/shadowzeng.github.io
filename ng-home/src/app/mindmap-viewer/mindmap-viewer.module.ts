@@ -3,6 +3,8 @@ import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 
 import {MarkdownViewerModule} from '../markdown-viewer'
+import {PopupModule} from '../popup'
+
 import {MindmapViewerRoutingModule} from './mindmap-viewer-routing.module'
 import {MindmapViewerComponent} from './mindmap-viewer.component'
 import {NodeMoreComponent} from './node-more.componenet'
@@ -13,7 +15,8 @@ import {NodeMoreComponent} from './node-more.componenet'
     OverlayModule,
     CommonModule,
     MarkdownViewerModule,
-    MindmapViewerRoutingModule
+    MindmapViewerRoutingModule,
+    PopupModule,
   ]
 })
 export class MindmapViewerModule { }
