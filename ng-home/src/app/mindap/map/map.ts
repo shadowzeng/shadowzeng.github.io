@@ -86,6 +86,7 @@ export class Map {
             updateOptions: this.options.update.bind(this.options),
             exportAsJSON: this.export.asJSON.bind(this.export),
             exportAsImage: this.export.asImage.bind(this.export),
+            updateNodeContent: this.history.save.bind(this.history),
             history: this.history.getHistory.bind(this.history),
             undo: this.history.undo.bind(this.history),
             redo: this.history.redo.bind(this.history),
@@ -112,6 +113,7 @@ export interface MindapInstance {
     remove: Function
     new: Function
     updateOptions: Function
+    updateNodeContent: Function
     exportAsJSON: Function
     exportAsImage: Function
     history: Function

@@ -9,54 +9,33 @@ import {Event} from './events'
  * Manage map image exports.
  */
 export default class Export {
+    private _map: Map
 
-    private map: Map
-
-    /**
-     * Get the associated map instance.
-     * @param {Map} map
-     */
     constructor(map: Map) {
-        this.map = map
+        this._map = map
     }
 
-    /**
-     * Return the snapshot (json) of the current map.
-     * @returns {MapSnapshot} json
-     */
+    // Return the snapshot (json) of the current map.
     public asJSON(): MapSnapshot {
-        const snapshot = this.map.history.current()
-
-        this.map.events.call(Event.exportJSON)
-
+        const snapshot = this._map.history.current()
+        this._map.events.call(Event.exportJSON)
         return  Utils.cloneObject(snapshot)
     }
 
-    /**
-     * Return the image data URI in the callback function.
-     * @param {Function} callback
-     * @param {string} type
-     */
+    // Return the image data URI in the callback function.
     public asImage(callback: Function, type?: string): void  {
         if (typeof callback !== 'function') {
             Log.error('The first parameter must be a function', 'type')
         }
-
         if (type && typeof type !== 'string') {
             Log.error('The second optional parameter must be a string', 'type')
         }
-
-        this.map.nodes.deselectNode()
-
+        this._map.nodes.deselectNode()
         this.dataURI(url => {
             const image = new Image()
-
             image.src = url
-
             image.onload = () => {
-                const canvas = document.createElement('canvas'),
-                    context = canvas.getContext('2d')
-
+                const canvas = document.createElement('canvas'), context = canvas.getContext('2d')
                 canvas.width = image.width
                 canvas.height = image.height
                 context.drawImage(image, 0, 0)
@@ -69,7 +48,7 @@ export default class Export {
                 }
 
                 callback(canvas.toDataURL(type))
-                this.map.events.call(Event.exportImage)
+                this._map.events.call(Event.exportImage)
             }
 
             image.onerror = () => {
@@ -80,10 +59,9 @@ export default class Export {
 
     /**
      * Convert the mind map svg in the data URI.
-     * @param {Function} callback
      */
     private dataURI(callback: Function): void {
-        const element = this.map.dom.g.node(),
+        const element = this._map.dom.g.node(),
             clone = element.cloneNode(true),
             svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'),
             box = element.getBBox(),
@@ -102,9 +80,7 @@ export default class Export {
 
         // If there is css, insert it
         if (css !== '') {
-            const style = document.createElement('style'),
-                defs = document.createElement('defs')
-
+            const style = document.createElement('style'), defs = document.createElement('defs')
             style.setAttribute('type', 'text/css')
             style.innerHTML = '<![CDATA[\n' + css + '\n]]>'
             defs.appendChild(style)
@@ -115,17 +91,13 @@ export default class Export {
         svg.appendChild(clone)
 
         this.convertImages(clone, () => {
-            const xmls = new XMLSerializer(),
-                reader = new FileReader()
-
+            const xmls = new XMLSerializer(), reader = new FileReader()
             const blob = new Blob([
                 xmls.serializeToString(svg)
             ], {
                 type: 'image/svg+xml'
             })
-
             reader.readAsDataURL(blob)
-
             reader.onloadend = () => {
                 callback(reader.result)
             }
@@ -149,34 +121,26 @@ export default class Export {
                     href = image.getAttribute('href')
 
                 img.crossOrigin = 'Anonymous'
-
                 img.src = href
-
                 img.onload = function () {
                     canvas.width = img.width
                     canvas.height = img.height
                     ctx.drawImage(img, 0, 0)
-
                     image.setAttribute('href', canvas.toDataURL('image/png'))
-
                     counter--
-
                     if (counter === 0) {
                         callback()
                     }
                 }
                 img.onerror = () => {
                     counter--
-
                     if (counter === 0) {
                         callback()
                     }
                 }
-
             }
         } else {
             callback()
         }
     }
-
 }

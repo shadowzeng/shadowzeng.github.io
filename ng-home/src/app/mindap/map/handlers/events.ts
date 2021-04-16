@@ -64,4 +64,5 @@ export enum Event {
     nodeCreate = 'mindap-node-create',
     nodeRemove = 'mindap-node-remove',
     nodePayloadSelect = 'mindap-node-payload-select',
+    nodeContentEdit = 'mindap-node-content-edit',
 }

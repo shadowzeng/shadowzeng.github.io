@@ -26,10 +26,8 @@ export default class Draw {
      */
     public create(): void {
         this.map.dom.container = d3.select('#' + this.map.id)
-            .style('position', 'relative')
 
         this.map.dom.svg = this.map.dom.container.append('svg')
-            .style('position', 'absolute')
             .style('width', '100%')
             .style('height', '100%')
             .style('top', 0)
@@ -102,6 +100,10 @@ export default class Draw {
             // .style('fill', 'none')
             .style('stroke-width', 1)
             .attr('d', (node: Node) => this.drawNodeBackground(node))
+            .on('contextmenu', (e: MouseEvent, node: Node) => {
+                e.preventDefault()
+                this.map.events.call(Event.nodeContentEdit, undefined, node)
+            })
 
         // Set image of the node
         outer.each((node: Node) => {
@@ -379,6 +381,7 @@ export default class Draw {
         div.style.setProperty('font-weight', node.font.weight)
         div.style.setProperty('text-decoration', node.font.decoration)
 
+        div.style.setProperty('outline', 'none')
         div.style.setProperty('display', 'inline-block')
         div.style.setProperty('white-space', 'pre')
         div.style.setProperty('font-family', this.map.options.fontFamily)

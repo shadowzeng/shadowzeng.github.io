@@ -1,8 +1,9 @@
 import {OptionParameters} from './map/options'
 import {Map, MindapInstance} from './map/map'
 import {Event} from './map/handlers/events'
+import Node from './map/models/node'
 
-export {MindapInstance, Event}
+export {MindapInstance, Event, Node}
 
 /**
  * Return a mmp object with all mmp functions.

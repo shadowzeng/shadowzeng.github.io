@@ -321,7 +321,8 @@ export default class Nodes {
             colors: Utils.cloneObject(node.colors) as Colors,
             font: Utils.cloneObject(node.font) as Font,
             locked: node.locked,
-            k: node.k
+            k: node.k,
+            payload: Utils.cloneObject(node.payload || {}),
         }
     }
 

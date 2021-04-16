@@ -5,7 +5,6 @@ import * as d3 from 'd3'
  * Model of the nodes.
  */
 export default class Node implements NodeProperties {
-
     public id: string
     public parent: Node
     public k: number
