@@ -8,6 +8,7 @@ import Drag from './handlers/drag'
 import Nodes from './handlers/nodes'
 import Export from './handlers/export'
 import CopyPaste from './handlers/copy-paste'
+import {Selection} from '../utils/types'
 
 /**
  * Initialize all handlers and return a mmp object.
@@ -58,7 +59,7 @@ export class Map {
         }
 
         if (this.options.zoom === true) {
-            this.dom.svg.call(this.zoom.getZoomBehavior()).on('dblclick.zoom', null)
+            this.dom.svg?.call(this.zoom.getZoomBehavior()).on('dblclick.zoom', null)
         }
 
         this.nodes.addRootNode()
@@ -69,7 +70,7 @@ export class Map {
     }
 
     private remove(): void {
-        this.dom.svg.remove()
+        this.dom.svg?.remove()
 
         const props = Object.keys(this.instance)
         for (let i = 0; i < props.length; i++) {
@@ -135,7 +136,7 @@ export interface MindapInstance {
 }
 
 export interface DomElements {
-    container?: any;
-    svg?: any;
-    g?: any;
+    container?: Selection<HTMLElement>;
+    svg?: Selection<SVGSVGElement>;
+    g?: Selection<SVGGElement>;
 }

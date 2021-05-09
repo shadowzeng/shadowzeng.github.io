@@ -21,7 +21,7 @@ export default class Zoom {
     constructor(map: Map) {
         this.map = map
 
-        this.zoomBehavior = d3.zoom().scaleExtent([0.5, 2]).on('zoom', (event) => {
+        this.zoomBehavior = d3.zoom().scaleExtent([1/8, 2]).on('zoom', (event) => {
             this.map.dom.g.attr('transform', event.transform)
             this.map.events.call(Event.zoom)
         })
@@ -86,6 +86,13 @@ export default class Zoom {
         }
 
         this.map.events.call(Event.center)
+    }
+
+    public centerRootGroup(): void {
+        const svgBox = this.map.dom.svg?.node()?.getBBox()
+        const groupBox = this.map.dom.g?.node()?.getBBox()
+        if (!svgBox || !groupBox)
+            return
     }
 
     /**

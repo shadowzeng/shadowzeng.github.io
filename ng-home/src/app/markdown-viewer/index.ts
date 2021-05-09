@@ -1,2 +1,2 @@
-export * from './markdown-viewer.module'
-export * from './markdown-viewer.component'
+export * from './module'
+export * from './markdown-viewer'

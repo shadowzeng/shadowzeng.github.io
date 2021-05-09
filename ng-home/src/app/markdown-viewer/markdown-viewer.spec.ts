@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MarkdownViewerComponent } from './markdown-viewer.component';
+import { MarkdownViewerComponent } from './markdown-viewer';
 
 describe('MarkdownViewerComponent', () => {
   let component: MarkdownViewerComponent;

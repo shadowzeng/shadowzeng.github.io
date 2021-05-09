@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router'
-import {MarkdownViewerComponent} from './markdown-viewer.component'
+import {MarkdownViewerComponent} from './markdown-viewer'
 
 const routes: Routes = [
   {path: '', component: MarkdownViewerComponent, pathMatch: 'full'}

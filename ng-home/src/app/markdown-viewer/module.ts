@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
-import {MarkdownViewerComponent} from './markdown-viewer.component'
+import {MarkdownViewerComponent} from './markdown-viewer'
 import {MarkdownModule} from 'ngx-markdown'
 
 @NgModule({

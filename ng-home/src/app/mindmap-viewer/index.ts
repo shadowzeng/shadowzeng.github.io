@@ -1,2 +1,2 @@
-export * from './mindmap-viewer.module'
-export * from './mindmap-viewer.component'
+export * from './module'
+export * from './mindmap-viewer'

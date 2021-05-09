@@ -1,2 +1,2 @@
-export * from './mindmap-editor.module'
-export * from './mindmap-editor.component'
+export * from './module'
+export * from './mindmap-editor'

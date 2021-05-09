@@ -2,6 +2,7 @@
 import * as d3 from 'd3'
 import {Map} from '../map'
 import Utils from '../../utils/utils'
+import {Selection} from '../../utils/types'
 import Node from '../models/node'
 import {Path} from 'd3-path'
 import {Event} from './events'
@@ -138,8 +139,8 @@ export default class Draw {
     public drawNodeBackground(node: Node): Path {
         const name = node.getNameDOM(), path = d3.path()
 
-        node.dimensions.width = name.clientWidth + 45
-        node.dimensions.height = name.clientHeight + 30
+        node.dimensions.width = name.clientWidth + 24
+        node.dimensions.height = name.clientHeight + 20
 
         const x = node.dimensions.width / 2,
             y = node.dimensions.height / 2
@@ -171,11 +172,12 @@ export default class Draw {
             inv = orx * ory
 
         path.moveTo(parent.coordinates.x, parent.coordinates.y)
-        path.bezierCurveTo(
-            mx - width * inv, parent.coordinates.y - width / 2,
-            parent.coordinates.x - width / 2 * inv, node.coordinates.y + node.dimensions.height / 2 - width / 3,
-            node.coordinates.x, node.coordinates.y
-        )
+        // path.bezierCurveTo(
+        //     mx - width * inv, parent.coordinates.y - width / 2,
+        //     parent.coordinates.x - width / 2 * inv, node.coordinates.y + node.dimensions.height / 2 - width / 3,
+        //     node.coordinates.x, node.coordinates.y
+        // )
+        path.lineTo(node.coordinates.x, node.coordinates.y)
         // path.bezierCurveTo(
         //     parent.coordinates.x + width / 2 * inv, node.coordinates.y + node.dimensions.height / 2 + width / 3,
         //     mx + width * inv, parent.coordinates.y + width / 2,

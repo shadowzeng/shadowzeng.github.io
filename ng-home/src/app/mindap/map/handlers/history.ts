@@ -9,9 +9,7 @@ import Utils from '../../utils/utils'
  * Manage map history, for each change save a snapshot.
  */
 export default class History {
-
     private map: Map
-
     private index: number
     private snapshots: MapSnapshot[]
 
@@ -21,7 +19,6 @@ export default class History {
      */
     constructor(map: Map) {
         this.map = map
-
         this.index = -1
         this.snapshots = []
     }
@@ -41,30 +38,19 @@ export default class History {
     public new(snapshot?: MapSnapshot): void {
         if (snapshot === undefined) {
             const oldRootCoordinates = Utils.cloneObject(this.map.nodes.getRoot().coordinates)
-
             this.map.nodes.setCounter(0)
-
             this.map.nodes.clear()
-
             this.map.draw.clear()
             this.map.draw.update()
-
             this.map.nodes.addRootNode(oldRootCoordinates)
-
             this.map.zoom.center(null, 0)
-
             this.save()
-
             this.map.events.call(Event.create)
         } else if (this.checkSnapshotStructure(snapshot)) {
             this.redraw(snapshot)
-
             this.map.zoom.center('position', 0)
-
             this.save()
-
             this.map.events.call(Event.create)
-            console.log(this.map)
         } else {
             Log.error('The snapshot is not correct')
         }
@@ -141,9 +127,7 @@ export default class History {
 
         this.map.draw.clear()
         this.map.draw.update()
-
         this.map.nodes.selectRootNode()
-
         this.setCounter()
     }
 

@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing'
 
-import {MindmapEditorComponent} from './mindmap-editor.component'
+import {MindmapViewerComponent} from './mindmap-viewer'
 
-describe('MindmapEditorComponent', () => {
-  let component: MindmapEditorComponent
-  let fixture: ComponentFixture<MindmapEditorComponent>
+describe('MindmapViewerComponent', () => {
+  let component: MindmapViewerComponent
+  let fixture: ComponentFixture<MindmapViewerComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MindmapEditorComponent ]
+      declarations: [ MindmapViewerComponent ]
     })
     .compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MindmapEditorComponent)
+    fixture = TestBed.createComponent(MindmapViewerComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

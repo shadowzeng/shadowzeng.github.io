@@ -5,22 +5,26 @@ import {throttleTime} from 'rxjs/operators'
 
 import {create} from '../mindap'
 import {PopupService, PopupConfig} from '../popup'
-import {NodeMoreComponent, NODE_MORE_CONTENT_TOKEN} from './node-more.componenet'
+import {MapFileService} from '../oss'
+import {NodeMoreComponent, NODE_MORE_CONTENT_TOKEN} from './node-more'
 
 @Component({
   selector: 'app-mindmap-viewer',
-  templateUrl: './mindmap-viewer.template.html',
-  styleUrls: ['./mindmap-viewer.style.scss'],
-  // providers: [PopupService],
+  templateUrl: './mindmap-viewer.html',
+  styleUrls: ['./mindmap-viewer.scss'],
 })
 export class MindmapViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   private _mapZoom$ = new Subject<void>()
-  constructor(private readonly _http: HttpClient, private readonly _popupService: PopupService<NodeMoreComponent>) { }
+  constructor(
+    private readonly _http: HttpClient,
+    private readonly _fileService: MapFileService,
+    private readonly _popupService: PopupService<NodeMoreComponent>
+  ) {}
 
   ngOnInit(): void {
     const map = create('viewer-map', {rootNode: {name: 'Root'}, readonly: true})
-    this._http.get('./map.json').subscribe(response => {
-      map.new(response)
+    this._fileService.get().then(json => {
+      map.new(json)
     })
 
     map.on('nodePayloadSelect', (element: Element, payload: any) => {
