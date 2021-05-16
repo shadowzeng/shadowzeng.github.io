@@ -1,23 +1,19 @@
 // @ts-nocheck
-import * as d3 from 'd3'
 
-export function testSvg() {
-    const svg = document.createElement('svg')
-    d3.select(svg).append('rect')
-    return svg
-}
+/**
+ *  example:
+ * 		const svg = document.getElementById('svg')
+ *   	const {width, height} = svg.getBBox()
+ * 		const svgStr = getSvgString(svg)
+ * 		svgToImg(svgStr, width, height)
+ */
 
-export function generateSvg() {
-    const svg = document.createElement('svg')
-    d3.select(svg).append('rect')
-    const svgStr = getSVGString(svg)
-    return svgStr
-}
+export function svgToImg(svgStr, width, height) {
+	const blob = new Blob([svgStr], {type: 'image/svg+xml;charset=utf-8'})
 
-export function svgToImg(svgString, width, height, format, callback) {
-    var format = format ? format : 'png'
+	const blobUrl = URL.createObjectURL(blob)
 
-	const imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ) // Convert SVG string to data URL
+	// const imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svg ) ) ) // Convert SVG string to data URL
 
 	const canvas = document.createElement('canvas')
 	const context = canvas.getContext('2d')
@@ -25,18 +21,40 @@ export function svgToImg(svgString, width, height, format, callback) {
 	canvas.width = width
 	canvas.height = height
 
-	const image = new Image()
+	// const image = new Image()
+	const image = document.getElementById('img')
 	image.onload = function() {
-		context.clearRect ( 0, 0, width, height )
-		context.drawImage(image, 0, 0, width, height)
+    	context.clearRect ( 0, 0, width, height )
+    	context.drawImage(image, 0, 0, width, height)
 
-		canvas.toBlob( function(blob) {
-			const filesize = Math.round( blob.length/1024 ) + ' KB'
-			if ( callback ) callback( blob, filesize )
-		})
+    	canvas.toBlob( function(blob) {
+        	// saveAs(blob)
+    	})
 	}
+	image.src = blobUrl
 
-	image.src = imgsrc
+    // var format = format ? format : 'png'
+
+	// const imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ) // Convert SVG string to data URL
+
+	// const canvas = document.createElement('canvas')
+	// const context = canvas.getContext('2d')
+
+	// canvas.width = width
+	// canvas.height = height
+
+	// const image = new Image()
+	// image.onload = function() {
+	// 	context.clearRect ( 0, 0, width, height )
+	// 	context.drawImage(image, 0, 0, width, height)
+
+	// 	canvas.toBlob( function(blob) {
+	// 		const filesize = Math.round( blob.length/1024 ) + ' KB'
+	// 		if ( callback ) callback( blob, filesize )
+	// 	})
+	// }
+
+	// image.src = imgsrc
 }
 
 // http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
