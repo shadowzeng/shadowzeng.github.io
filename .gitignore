@@ -160,11 +160,13 @@ pip-log.txt
 # Mac crap
 .DS_Store
 .idea
+.vscode
 .ideaout
 rat.iml
 
 node_modules
 dist
+vendor
 package-lock.json
 
 todo

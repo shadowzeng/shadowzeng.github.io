@@ -1,0 +1,14 @@
+{
+    "db": {
+        "user_name": "root",
+        "password": "12345678",
+        "ip": "127.0.0.1",
+        "port": 3306,
+        "db_name": "shadow_mindmap_db",
+        "max_open_conns": 10,
+        "max_idle_conns": 5,
+        "max_lifetime": 100
+    },
+    "port": 9090,
+    "is_live": false
+}
