@@ -100,6 +100,7 @@ export default class Draw {
             .style('fill', (node: Node) => node.colors.background)
             // .style('fill', 'none')
             .style('stroke-width', 1)
+            .style('stroke', 'rgb(87, 122, 150)')
             .attr('d', (node: Node) => this.drawNodeBackground(node))
             .on('contextmenu', (e: MouseEvent, node: Node) => {
                 e.preventDefault()
