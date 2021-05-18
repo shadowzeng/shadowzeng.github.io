@@ -2,14 +2,15 @@
 #[macro_use]
 extern crate diesel;
 
-use actix_web::{dev::ServiceRequest, web, App, Error, HttpServer};
+use actix_web::*;
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
+use std::sync::*;
 
-// mod errors;
+mod errors;
 mod handlers;
-// mod models;
-// mod schema;
+mod models;
+mod schema;
 
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
@@ -26,15 +27,22 @@ async fn main() -> std::io::Result<()> {
         .build(manager)
         .expect("Failed to create pool.");
 
+    let data = Arc::new(Mutex::new(ActixData::default()));
     // Start http server
     HttpServer::new(move || {
         App::new()
+            .data(data.clone())
             .route("/users", web::get().to(handlers::get_users))
             .route("/users/{id}", web::get().to(handlers::get_user_by_id))
             .route("/users", web::post().to(handlers::add_user))
             .route("/users/{id}", web::delete().to(handlers::delete_user))
     })
-    .bind("127.0.0.1:8080")?
+    .bind("127.0.0.1:8083")?
     .run()
     .await
+}
+
+#[derive(Debug, Default)]
+struct ActixData {
+    counter: usize,
 }
