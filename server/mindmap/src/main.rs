@@ -6,6 +6,7 @@ use actix_web::*;
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 use std::sync::*;
+use log::error;
 
 mod errors;
 mod handlers;
@@ -17,7 +18,8 @@ pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv::dotenv().ok();
-    std::env::set_var("RUST_LOG", "actix_web=debug");
+    std::env::set_var("RUST_LOG", "info,actix_web=debug");
+    env_logger::init();
 
     let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
@@ -27,11 +29,11 @@ async fn main() -> std::io::Result<()> {
         .build(manager)
         .expect("Failed to create pool.");
 
-    let data = Arc::new(Mutex::new(ActixData::default()));
     // Start http server
     HttpServer::new(move || {
         App::new()
-            .data(data.clone())
+            .wrap(middleware::Logger::default())
+            .data(pool.clone())
             .route("/users", web::get().to(handlers::get_users))
             .route("/users/{id}", web::get().to(handlers::get_user_by_id))
             .route("/users", web::post().to(handlers::add_user))
@@ -40,9 +42,4 @@ async fn main() -> std::io::Result<()> {
     .bind("127.0.0.1:8083")?
     .run()
     .await
-}
-
-#[derive(Debug, Default)]
-struct ActixData {
-    counter: usize,
 }

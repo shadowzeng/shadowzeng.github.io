@@ -7,3 +7,11 @@ https://auth0.com/blog/build-an-api-in-rust-with-jwt-authentication-using-actix-
 运行 cargo install diesel_cli --no-default-features --features postgres 报错, cannot find -lpq 之类的
 需安装 sudo apt install libpq-dev
 https://github.com/sgrif/pq-sys/issues/34#issuecomment-738561217
+
+
+diesel 配置命令
+```
+diesel setup  创建数据库，生存 migrations 目录和 diesel.toml 文件
+diesel migration generate add_users  在 migrations 目录中新建一个包含两个空文件的目录
+diesel migration run 创建数据库表？
+```

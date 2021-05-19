@@ -4,10 +4,12 @@ use super::schema::users::dsl::*;
 use super::Pool;
 use crate::diesel::QueryDsl;
 use crate::diesel::RunQueryDsl;
+use super::errors::{ServiceError};
 use actix_web::{web, Error, HttpResponse};
 use diesel::dsl::{delete, insert_into};
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
+use log::*;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct InputUser {
@@ -39,11 +41,12 @@ pub async fn get_user_by_id(
 pub async fn add_user(
     db: web::Data<Pool>,
     item: web::Json<InputUser>,
-) -> Result<HttpResponse, Error> {
+) -> Result<HttpResponse, ServiceError> {
     Ok(web::block(move || add_single_user(db, item))
         .await
         .map(|user| HttpResponse::Created().json(user))
-        .map_err(|_| HttpResponse::InternalServerError())?)
+        .map_err(|_| ServiceError::InternalServerError)?)
+        // .map_err(|e| log::error!("xxxx: {}", e)).unwrap())
 }
 
 // Handler for DELETE /users/{id}
