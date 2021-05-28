@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <noscript>
+        setTimeout(() => {
+            console.log('setTimeout-1')
+            setTimeout(() => {
+                console.log('setTimeout-2')
+            })
+            Promise.resolve().then(() => {
+                console.log('promise-4')
+            })
+        })
+        setTimeout(() => {
+            console.log('setTimeout-3')
+        })
+        requestAnimationFrame(() => {
+            console.log('requestAnimationFrame-1')
+        })
+        Promise.resolve().then(() => {
+            console.log('promise-1')
+            setTimeout(() => {
+                console.log('setTimeout-4')
+            })
+            Promise.resolve().then(() => {
+                console.log('promise-2')
+            })
+            new Promise(() => {
+                console.log('promise-task-2')
+            })
+            requestAnimationFrame(() => {
+                console.log('requestAnimationFrame-2')
+            })
+        })
+        new Promise(() => {
+            console.log('promise-task-1')
+            setTimeout(() => {
+                console.log('setTimeout-5')
+            })
+            requestAnimationFrame(() => {
+                console.log('requestAnimationFrame-3')
+            })
+            Promise.resolve().then(() => {
+                console.log('promise-3')
+            })
+        })
+    </noscript>
+<!--
+Chrome 83
+
+promise-task-1
+promise-1
+promise-task-2
+promise-3
+promise-2
+setTimeout-1
+promise-4
+setTimeout-3
+setTimeout-5
+setTimeout-4
+setTimeout-2
+requestAnimationFrame-1
+requestAnimationFrame-3
+requestAnimationFrame-2
+
+or:
+
+promise-task-1
+promise-1
+promise-task-2
+promise-3
+promise-2
+requestAnimationFrame-1
+requestAnimationFrame-3
+requestAnimationFrame-2
+setTimeout-1
+promise-4
+setTimeout-3
+setTimeout-5
+setTimeout-4
+setTimeout-2
+
+or:
+
+promise-task-1
+promise-1
+promise-task-2
+promise-3
+promise-2
+setTimeout-1
+promise-4
+setTimeout-3
+setTimeout-5
+setTimeout-4
+requestAnimationFrame-1
+requestAnimationFrame-3
+requestAnimationFrame-2
+setTimeout-2
+-->
+    <noscript>
+        // Chrome 83
+        /**
+         * setTimeout
+         * requestAnimationFrame
+         *
+         * or:
+         *
+         * requestAnimationFrame
+         * setTimeout
+         */
+        requestAnimationFrame(() => {
+            console.log('requestAnimationFrame')
+        })
+        setTimeout(() => {
+            console.log('setTimeout')
+        })
+    </noscript>
+    <script>
+        // Chrome 83
+        /**
+         * promise
+         * requestAnimationFrame
+         */
+        requestAnimationFrame(() => {
+            console.log('requestAnimationFrame')
+        })
+        Promise.resolve().then(() => {
+            console.log('promise')
+        })
+    </script>
+</body>
+</html>
