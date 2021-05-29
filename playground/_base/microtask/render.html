@@ -9,11 +9,20 @@
 <body>
     <div id='el' style='width: 100px; height: 100px; background-color: red;'></div>
     <script>
-        requestAnimationFrame(() => {
-            console.log(document.getElementById('el').style.backgroundColor)
-        })
-        console.log(document.getElementById('el').style.backgroundColor)
-        document.getElementById('el').style.backgroundColor = 'green'
+        setTimeout(() => {
+            requestAnimationFrame(() => {
+                // 此处不输出
+                console.log(document.getElementById('el').style.backgroundColor)
+            })
+            console.log(document.getElementById('el').style.backgroundColor) // red
+            document.getElementById('el').style.backgroundColor = 'green'
+            console.log(document.getElementById('el').style.backgroundColor) // green
+            /**
+             * 此处死循环，页面上div一直是红色，说明同步代码的执行会影响渲染
+             * (Chrome 90.0.4430.212（正式版本）(arm64))
+             */
+            while (true) {}
+        }, 5000)
     </script>
 </body>
 </html>
