@@ -19,10 +19,11 @@ pub struct InputUser {
 }
 
 pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
+    log::info!("request get users");
     Ok(web::block(move || get_all_users(db))
         .await
         .map(|user| HttpResponse::Ok().json(user))
-        .map_err(|_| HttpResponse::InternalServerError())?)
+        .map_err(|e| ServiceError::InternalServerError(e.to_string()))?)
 }
 
 pub async fn get_user_by_id(
@@ -45,7 +46,7 @@ pub async fn add_user(
     Ok(web::block(move || add_single_user(db, item))
         .await
         .map(|user| HttpResponse::Created().json(user))
-        .map_err(|_| ServiceError::InternalServerError)?)
+        .map_err(|e| ServiceError::InternalServerError(e.to_string()))?)
         // .map_err(|e| log::error!("xxxx: {}", e)).unwrap())
 }
 

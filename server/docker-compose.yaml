@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: mindmap
+      # target: development
+  #   image: shadowzeng/mindmap-rust
+    environment:
+      - DATABASE_URL=postgres://postgres:shadow12#@db/postgres
+    networks:
+      - client-side
+      - server-side
+    ports:
+      - 8088:8083
+  #   volumes:
+  #     - ./backend/src:/code/src
+  #     - backend-cache:/code/target
+    depends_on:
+      - db
+  db:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=shadow12#
+    networks:
+      - server-side
+    ports:
+      - 5432:5432
+    volumes:
+      # - db-data:/Users/rebecca/zeng/postgresql/data
+      - /Users/rebecca/zeng/postgresql/data:/var/lib/postgresql/data
+networks:
+  client-side: {}
+  server-side: {}
+volumes:
+  backend-cache: {}
+  db-data: {}

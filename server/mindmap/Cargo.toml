@@ -25,3 +25,11 @@ chrono = { version = "0.4.19", features = ["serde"] }
 
 env_logger = "0.8"
 log = "0.4"
+
+[dependencies.log4rs]
+version = "0.4"
+features = ["yaml"]
+
+[dependencies.log4rs-rolling-file]
+version = "0.1"
+features = ["gzip"]
