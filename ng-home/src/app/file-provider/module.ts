@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core'
 
-import {MapFileService} from './map-file.service'
+import {OssService} from './oss.service'
 
 @NgModule({
-  providers: [MapFileService],
+  providers: [OssService],
 })
 export class MapFileModule { }

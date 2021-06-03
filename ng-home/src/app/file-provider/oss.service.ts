@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core'
 import * as OssClient from 'ali-oss'
+
 import {getToday} from '../base'
+import {FileProvider} from './file-provider'
 
 const MAP_FILE_NAME = 'mindmap.json'
 
 @Injectable({providedIn: 'root'})
-export class MapFileService {
+export class OssService extends FileProvider {
     public constructor() {
+        super()
         this._client = new OssClient({
             region: 'oss-cn-shenzhen',
             bucket: 'shadow-mindmap',
@@ -22,7 +25,7 @@ export class MapFileService {
         return this._client.put(MAP_FILE_NAME, file)
     }
 
-    public saveAsBackup(file: File): Promise<OssClient.PutObjectResult> {
+    public saveAs(file: File): Promise<OssClient.PutObjectResult> {
         const date = getToday()
         return this._client.put(`mindmap-${date}.json`, file)
     }

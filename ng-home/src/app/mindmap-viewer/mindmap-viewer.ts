@@ -5,7 +5,7 @@ import {throttleTime} from 'rxjs/operators'
 
 import {create} from '../mindap'
 import {PopupService, PopupConfig} from '../popup'
-import {MapFileService} from '../oss'
+import {EcsService} from '../file-provider'
 import {NodeMoreComponent, NODE_MORE_CONTENT_TOKEN} from './node-more'
 
 @Component({
@@ -17,7 +17,7 @@ export class MindmapViewerComponent implements OnInit, AfterViewInit, OnDestroy 
   private _mapZoom$ = new Subject<void>()
   constructor(
     private readonly _http: HttpClient,
-    private readonly _fileService: MapFileService,
+    private readonly _fileService: EcsService,
     private readonly _popupService: PopupService<NodeMoreComponent>
   ) {}
 
