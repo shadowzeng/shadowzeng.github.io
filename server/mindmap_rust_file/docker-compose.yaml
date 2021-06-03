@@ -1,0 +1,13 @@
+services:
+  backend:
+    build:
+      context: .
+    # environment:
+    #   - DATABASE_URL=postgres://postgres:shadow12#@db/postgres
+    networks:
+      - client-side
+      - server-side
+    ports:
+      - 8088:8083
+    volumes:
+      - /home/kai/min_data:/home/mindmap_file_data

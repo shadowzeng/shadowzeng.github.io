@@ -19,6 +19,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::Logger::default())
             .route("/file/get", web::get().to(handlers::get_file))
             .route("/file/save", web::post().to(handlers::save_file))
+            .route("/file/save_as", web::post().to(handlers::save_as_file))
     })
     .bind("0.0.0.0:8083")?
     .run()
