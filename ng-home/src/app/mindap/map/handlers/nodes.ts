@@ -127,13 +127,12 @@ export default class Nodes {
                     const node = this.nodes.get(id),
                         background = node.getBackgroundDOM()
 
-                    if (!background.style.stroke) {
+                    if (this.selectedNode !== node) {
                         if (this.selectedNode) {
-                            this.selectedNode.getBackgroundDOM().style.stroke = ''
+                            this.selectedNode.getBackgroundDOM().style.fill = 'white'
                         }
 
-                        const color = d3.color(background.style.fill).darker(.5)
-                        background.style.stroke = color.toString()
+                        background.style.fill = 'aliceblue'
 
                         Utils.removeAllRanges()
                         this.selectedNode.getNameDOM().blur()
@@ -165,7 +164,7 @@ export default class Nodes {
      */
     public deselectNode(): void {
         if (this.selectedNode) {
-            this.selectedNode.getBackgroundDOM().style.stroke = ''
+            this.selectedNode.getBackgroundDOM().style.fill = 'white'
             Utils.removeAllRanges()
         }
 
@@ -476,6 +475,7 @@ export default class Nodes {
      */
     public selectRootNode() {
         this.selectedNode = this.nodes.get(this.map.id + '_node_0')
+        this.selectedNode.getBackgroundDOM().style.fill = 'aliceblue'
     }
 
     /**

@@ -56,7 +56,7 @@ export default class Options implements OptionParameters {
                 branch: '#577a96'
             },
             font: {
-                size: 16,
+                size: 14,
                 style: 'normal',
                 weight: 'normal'
             },
@@ -77,9 +77,9 @@ export default class Options implements OptionParameters {
                 branch: ''
             },
             font: {
-                size: 20,
+                size: 16,
                 style: 'normal',
-                weight: 'normal'
+                weight: 'bold'
             }
             // @ts-ignore
         }, parameters.rootNode, true) as DefaultNodeProperties

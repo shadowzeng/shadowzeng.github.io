@@ -69,6 +69,9 @@ export default class Draw {
             .on('dblclick', (event: MouseEvent, node: Node) => {
                 this.enableNodeNameEditing(node)
             })
+            .on('click', (_: MouseEvent, node: Node) => {
+              this.map.nodes.selectNode(node.id)
+            })
             .on('touchstart', (event: MouseEvent, node: Node) => {
                 if (!tapedTwice) {
                     tapedTwice = true
@@ -97,8 +100,8 @@ export default class Draw {
 
         // Set background of the node
         outer.insert('path', 'foreignObject')
-            .style('fill', (node: Node) => node.colors.background)
-            // .style('fill', 'none')
+            // .style('fill', (node: Node) => node.colors.background)
+            .style('fill', 'white')
             .style('stroke-width', 1)
             .style('stroke', 'rgb(87, 122, 150)')
             .attr('d', (node: Node) => this.drawNodeBackground(node))
@@ -141,7 +144,7 @@ export default class Draw {
         const name = node.getNameDOM(), path = d3.path()
 
         node.dimensions.width = name.clientWidth + 24
-        node.dimensions.height = name.clientHeight + 20
+        node.dimensions.height = name.clientHeight + 5
 
         const x = node.dimensions.width / 2,
             y = node.dimensions.height / 2
@@ -389,6 +392,8 @@ export default class Draw {
         div.style.setProperty('white-space', 'pre')
         div.style.setProperty('font-family', this.map.options.fontFamily)
         div.style.setProperty('text-align', 'center')
+        div.style.setProperty('vertical-align', 'text-top')
+        div.style.setProperty('line-height', '16px')
 
         if (!this.map.options.readonly)
             div.setAttribute('contenteditable', 'true')
