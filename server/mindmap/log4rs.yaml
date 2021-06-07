@@ -26,7 +26,7 @@ appenders:
       pattern: archive/example-{}.gz
 
 root:
-  level: trace
+  level: info
   appenders:
     - stdout
     - file

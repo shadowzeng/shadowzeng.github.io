@@ -1,15 +1,13 @@
-
 #[macro_use]
 extern crate diesel;
 
-extern crate log4rs;
-extern crate log4rs_rolling_file;
+// extern crate log4rs;
+// extern crate log4rs_rolling_file;
 
 use actix_web::*;
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
-use std::sync::*;
-use log::*;
+use log::{info};
 
 mod errors;
 mod handlers;
@@ -32,6 +30,8 @@ async fn main() -> std::io::Result<()> {
     let pool: Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
+
+    info!("Start server...");
 
     // Start http server
     HttpServer::new(move || {

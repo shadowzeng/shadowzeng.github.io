@@ -1,25 +1,23 @@
-use actix_web::Responder;
 use super::models::{NewUser, User};
 use super::schema::users::dsl::*;
 use super::Pool;
-use crate::diesel::QueryDsl;
+use diesel::QueryDsl;
 use crate::diesel::RunQueryDsl;
 use super::errors::{ServiceError};
 use actix_web::{web, Error, HttpResponse};
 use diesel::dsl::{delete, insert_into};
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
-use log::*;
+use log::{info};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct InputUser {
-    pub first_name: String,
-    pub last_name: String,
+    pub name: String,
     pub email: String,
 }
 
 pub async fn get_users(db: web::Data<Pool>) -> Result<HttpResponse, Error> {
-    log::info!("request get users");
+    info!("request get users");
     Ok(web::block(move || get_all_users(db))
         .await
         .map(|user| HttpResponse::Ok().json(user))
@@ -74,8 +72,7 @@ fn add_single_user(
 ) -> Result<User, diesel::result::Error> {
     let conn = db.get().unwrap();
     let new_user = NewUser {
-        first_name: &item.first_name,
-        last_name: &item.last_name,
+        name: &item.name,
         email: &item.email,
         created_at: chrono::Local::now().naive_local(),
     };

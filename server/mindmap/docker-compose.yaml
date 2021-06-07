@@ -1,9 +1,7 @@
 services:
   backend:
     build:
-      context: mindmap
-      # target: development
-  #   image: shadowzeng/mindmap-rust
+      context: .
     environment:
       - DATABASE_URL=postgres://postgres:shadow12#@db/postgres
     networks:
@@ -11,9 +9,6 @@ services:
       - server-side
     ports:
       - 8088:8083
-  #   volumes:
-  #     - ./backend/src:/code/src
-  #     - backend-cache:/code/target
     depends_on:
       - db
   db:
@@ -26,8 +21,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      # - db-data:/Users/rebecca/zeng/postgresql/data
-      - /Users/rebecca/zeng/postgresql/data:/var/lib/postgresql/data
+      - /home/postgresql/data:/var/lib/postgresql/data
 networks:
   client-side: {}
   server-side: {}
