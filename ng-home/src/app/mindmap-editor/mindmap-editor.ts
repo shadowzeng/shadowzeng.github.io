@@ -6,8 +6,6 @@ import {PopupConfig, PopupService} from '../popup'
 import {EcsService} from '../file-provider'
 import {NodeContentEditComponent, NODE_CONTENT_EDIT_TOKEN} from './node-content-edit'
 
-const MAP_FILE_NAME = 'mindmap.json'
-
 @Component({
   selector: 'app-mindmap-editor',
   templateUrl: './mindmap-editor.html',
@@ -47,9 +45,6 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
   public onDownloadMap(): void {
     const data = this._map.exportAsJSON()
     const json = JSON.stringify(data)
-
-    // const blob = new Blob([json], {type: 'application/json'})
-    // const file = new File([blob], MAP_FILE_NAME)
     this._fileService.save(json).then(() => {
       this._snackBar.open('上传服务器成功', undefined, {duration: 3000})
     })
@@ -58,9 +53,6 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
   public onBackupMap(): void {
     const data = this._map.exportAsJSON()
     const json = JSON.stringify(data)
-
-    // const blob = new Blob([json], {type: 'application/json'})
-    // const file = new File([blob], MAP_FILE_NAME)
     this._fileService.saveAs(json).then(() => {
       this._snackBar.open('备份成功', undefined, {duration: 3000})
     })

@@ -1,12 +1,14 @@
-// @ts-nocheck
 import * as d3 from 'd3'
+
+import {NodeProperties} from './node_properties'
+import {Dimensions, Coordinates, Image, Colors, Font} from './user_node_properties'
 
 /**
  * Model of the nodes.
  */
 export default class Node implements NodeProperties {
     public id: string
-    public parent: Node
+    public parent: NodeProperties | null = null
     public k: number
 
     public name: string
@@ -16,7 +18,7 @@ export default class Node implements NodeProperties {
     public colors: Colors
     public font: Font
     public locked: boolean
-    public dom: SVGGElement
+    public dom!: SVGGElement
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     public payload?: any
 
@@ -71,7 +73,8 @@ export default class Node implements NodeProperties {
      * @returns {HTMLDivElement} div
      */
     public getNameDOM(): HTMLDivElement {
-        return this.dom.querySelector('foreignObject > div')
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.dom.querySelector('foreignObject > div')!
     }
 
     /**
@@ -79,7 +82,8 @@ export default class Node implements NodeProperties {
      * @returns {SVGPathElement} path
      */
     public getBackgroundDOM(): SVGPathElement {
-        return this.dom.querySelector('path')
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.dom.querySelector('path')!
     }
 
     /**
@@ -87,58 +91,9 @@ export default class Node implements NodeProperties {
      * @returns {SVGImageElement} image
      */
     public getImageDOM(): SVGImageElement {
-        return this.dom.querySelector('image')
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.dom.querySelector('image')!
     }
 
 }
 
-export interface UserNodeProperties {
-    name: string
-    coordinates: Coordinates
-    image: Image
-    colors: Colors
-    font: Font
-    locked: boolean
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    payload?: any
-}
-
-export interface NodeProperties extends UserNodeProperties {
-    id: string
-    parent: Node
-    k?: number
-}
-
-export interface ExportNodeProperties extends UserNodeProperties {
-    id: string
-    parent: string
-    k: number
-}
-
-export interface Coordinates {
-    x: number
-    y: number
-}
-
-export interface Dimensions {
-    width: number
-    height: number
-}
-
-export interface Image {
-    src: string
-    size: number
-}
-
-export interface Colors {
-    name: string
-    background: string
-    branch: string
-}
-
-export interface Font {
-    size: number
-    style: string
-    weight: string
-    decoration: string
-}
