@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core'
 import {MatSnackBar} from '@angular/material/snack-bar'
+import {saveAs} from 'file-saver'
 
 import {create, MindapInstance, Node} from '../mindap'
 import {PopupConfig, PopupService} from '../popup'
@@ -43,6 +44,12 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
   }
 
   public onDownloadMap(): void {
+    const json = this._map.exportAsJSON()
+    const blob = new Blob([JSON.stringify(json)], {type: 'application/json'})
+    saveAs(blob)
+  }
+
+  public onUploadMap(): void {
     const data = this._map.exportAsJSON()
     const json = JSON.stringify(data)
     this._fileService.save(json).then(() => {
@@ -60,13 +67,13 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
 
   public onLoadMap(event: Event): void {
     console.log(event)
-    let reader = new FileReader()
+    const reader = new FileReader()
     const input = event.target as HTMLInputElement
     // @ts-ignore
     reader.readAsText(input.files[0])
     reader.onload = (e) => {
         // @ts-ignore
-        let data = JSON.parse(e.target.result)
+        const data = JSON.parse(e.target.result)
         this._map.new(data)
     }
     input.value = ''

@@ -74,7 +74,7 @@ export default class Node implements NodeProperties {
      */
     public getNameDOM(): HTMLDivElement {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        return this.dom.querySelector('foreignObject > div')!
+        return this.dom.querySelector('foreignObject > div')! as HTMLDivElement
     }
 
     /**
