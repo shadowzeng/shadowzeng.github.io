@@ -29,7 +29,7 @@ export class EcsService extends FileProvider {
         return this._http.get(`${SERVER_ADDRESS}/file/get`).pipe(
             map(content => JSON.parse(content as string)),
             catchError(() => {
-                this._snackbar.open('读取ECS服务器文件出错，当前显示备份文件')
+                this._snackbar.open('读取ECS服务器文件出错，当前显示备份文件', undefined, {duration: 3000})
                 return this._getLocalFile()
             })
         ).toPromise()

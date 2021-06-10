@@ -8,9 +8,10 @@ import {EcsService} from '../file-provider'
 import {NodeContentEditComponent, NODE_CONTENT_EDIT_TOKEN} from './node-content-edit'
 
 @Component({
+  providers: [PopupService],
   selector: 'app-mindmap-editor',
+  styleUrls: ['./mindmap-editor.scss'],
   templateUrl: './mindmap-editor.html',
-  styleUrls: ['./mindmap-editor.scss']
 })
 export class MindmapEditorComponent implements OnInit, OnDestroy {
   private _map!: MindapInstance

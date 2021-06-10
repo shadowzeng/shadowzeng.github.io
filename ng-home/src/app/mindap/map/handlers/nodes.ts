@@ -85,14 +85,11 @@ export default class Nodes {
         }
 
         const properties: NodeProperties = Utils.mergeObjects(this.map.options.defaultNode, userProperties, true) as NodeProperties
-
         properties.id = this.map.id + '_node_' + this.counter
         properties.parent = parentNode
 
         const node: Node = new Node(properties)
-
         this.nodes.set(properties.id, node)
-
         this.counter++
 
         // Set coordinates
@@ -100,14 +97,11 @@ export default class Nodes {
 
         if (userProperties && userProperties.coordinates) {
             const fixedCoordinates = this.fixCoordinates(userProperties.coordinates)
-
             node.coordinates = Utils.mergeObjects(node.coordinates, fixedCoordinates, true) as Coordinates
         }
 
         this.map.draw.update()
-
         this.map.history.save()
-
         this.map.events.call(Event.nodeCreate, node.dom, this.getNodeProperties(node))
     }
 

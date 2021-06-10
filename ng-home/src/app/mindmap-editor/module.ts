@@ -6,7 +6,6 @@ import {MatTooltipModule} from '@angular/material/tooltip'
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 import {MarkdownEditorModule} from '../markdown-editor'
-import {PopupModule} from '../popup'
 import {MindmapEditorRoutingModule} from './routing.module'
 import {MindmapEditorComponent} from './mindmap-editor'
 import {NodeContentEditComponent} from './node-content-edit'
@@ -22,7 +21,6 @@ import {NodeContentEditComponent} from './node-content-edit'
     MatIconModule,
     MatSnackBarModule,
     MindmapEditorRoutingModule,
-    PopupModule,
   ]
 })
 export class MindmapEditorModule { }

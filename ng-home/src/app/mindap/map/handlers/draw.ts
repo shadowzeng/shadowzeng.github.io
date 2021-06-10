@@ -247,7 +247,7 @@ export default class Draw {
     }
 
     public setPayloadFlag(node: Node): void {
-        if (!node.payload)
+        if (!node.payload || !node.payload.content)
             return
         const {width, height} = node.dimensions
         const r = 4
@@ -381,7 +381,8 @@ export default class Draw {
     private createNodeNameDOM(node: Node) {
         const div = document.createElement('div')
 
-        div.style.setProperty('font-size', node.font.size.toString() + 'px')
+        // TODO: use font size stored in node.
+        div.style.setProperty('font-size', '14px')
         div.style.setProperty('color', node.colors.name)
         div.style.setProperty('font-style', node.font.style)
         div.style.setProperty('font-weight', node.font.weight)

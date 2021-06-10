@@ -9,9 +9,10 @@ import {EcsService} from '../file-provider'
 import {NodeMoreComponent, NODE_MORE_CONTENT_TOKEN} from './node-more'
 
 @Component({
+  providers: [PopupService],
   selector: 'app-mindmap-viewer',
-  templateUrl: './mindmap-viewer.html',
   styleUrls: ['./mindmap-viewer.scss'],
+  templateUrl: './mindmap-viewer.html',
 })
 export class MindmapViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   private _mapZoom$ = new Subject<void>()

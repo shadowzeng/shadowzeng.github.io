@@ -3,7 +3,7 @@
     <button mat-icon-button (click)='onRedo()'><mat-icon>redo</mat-icon></button>
     <button mat-icon-button (click)='onAddNode()'><mat-icon>add</mat-icon></button>
     <button mat-icon-button (click)='onRemoveNode()'><mat-icon>remove</mat-icon></button>
-    <button mat-icon-button (click)='onDownloadMap()' matTooltip='下载'><mat-icon>backup</mat-icon></button>
+    <button mat-icon-button (click)='onDownloadMap()' matTooltip='下载'><mat-icon>download</mat-icon></button>
     <button mat-icon-button (click)='onUploadMap()' matTooltip='保存到服务器'><mat-icon>backup</mat-icon></button>
     <button mat-icon-button (click)='uploadInput.click()' matTooltip='上传本地文件...'><mat-icon>archive</mat-icon></button>
     <input #uploadInput style="display:none" type="file" class="upload-map" (change)='onLoadMap($event)'>
