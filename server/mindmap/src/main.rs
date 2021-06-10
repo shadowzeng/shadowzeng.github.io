@@ -3,8 +3,6 @@ extern crate diesel;
 
 use actix_web::{HttpServer, App, web};
 use actix_web::middleware::Logger;
-use diesel::prelude::{PgConnection};
-use diesel::r2d2::{self, ConnectionManager};
 use log::{info};
 
 mod db;
@@ -12,8 +10,6 @@ mod errors;
 mod handlers;
 mod models;
 mod schema;
-
-pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
