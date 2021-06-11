@@ -1,5 +1,7 @@
 <div class='header'>
-    <button (click)='onClose()'>OK</button>
+    <button mat-icon-button (click)='onClose()'>
+        <mat-icon>close</mat-icon>
+    </button>
 </div>
 <div class='body'>
     <app-markdown-viewer [content]='markdown'></app-markdown-viewer>

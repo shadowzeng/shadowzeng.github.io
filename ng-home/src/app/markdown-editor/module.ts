@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {ReactiveFormsModule} from '@angular/forms'
+import {MatButtonModule} from '@angular/material/button'
+import {MatIconModule} from '@angular/material/icon'
 import {MarkdownViewerModule} from '../markdown-viewer'
 
 import {MarkdownEditorComponent} from './markdown-editor'
@@ -10,7 +12,9 @@ import {MarkdownEditorComponent} from './markdown-editor'
   exports: [MarkdownEditorComponent],
   imports: [
     ReactiveFormsModule,
+    MatIconModule,
     CommonModule,
+    MatButtonModule,
     MarkdownViewerModule,
   ]
 })

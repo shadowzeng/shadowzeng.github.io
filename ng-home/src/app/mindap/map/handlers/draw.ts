@@ -54,6 +54,7 @@ export default class Draw {
         const nodes = this.map.nodes.getNodes(),
             dom = {
                 nodes: this.map.dom.g.selectAll('.' + this.map.id + '_node').data(nodes),
+                // 除去根节点，其余节点每个和其父节点对应一个branch
                 branches: this.map.dom.g.selectAll('.' + this.map.id + '_branch').data(nodes.slice(1))
             }
         let tapedTwice = false

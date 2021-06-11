@@ -3,10 +3,15 @@
   overflow: hidden;
   height: 100%;
   flex-wrap: wrap;
+  font-size: 14px;
 }
+
 .markdown-editor-toolbar {
   height: 32px;
   flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  height: 24px;
 }
 
 .markdown-editor-editing-area {
@@ -16,10 +21,26 @@
 .markdown-editor-preview-area {
   height: calc(100% - 32px);
   flex-basis: 50%;
+  overflow: auto;
 }
 
 .editor-textarea {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  resize: none;
+}
+
+.close-button {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+}
+
+.close-icon {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 16px;
 }

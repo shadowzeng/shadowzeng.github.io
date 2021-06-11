@@ -1,6 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core'
 import {MatSnackBar} from '@angular/material/snack-bar'
 import {saveAs} from 'file-saver'
+import {Subject} from 'rxjs'
+import {throttleTime} from 'rxjs/operators'
 
 import {create, MindapInstance, Node} from '../mindap'
 import {PopupConfig, PopupService} from '../popup'
@@ -15,6 +17,7 @@ import {NodeContentEditComponent, NODE_CONTENT_EDIT_TOKEN} from './node-content-
 })
 export class MindmapEditorComponent implements OnInit, OnDestroy {
   private _map!: MindapInstance
+  private _mapZoom$ = new Subject<void>()
 
   public constructor(
     private readonly _fileService: EcsService,
@@ -23,9 +26,13 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this._initMap()
+    this._mapZoom$.pipe(throttleTime(0)).subscribe(() => {
+      this._popupService.updatePosition()
+    })
   }
 
   public ngOnDestroy(): void {
+    this._mapZoom$.complete()
   }
 
   public onAddNode(): void {
@@ -67,20 +74,24 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
   }
 
   public onLoadMap(event: Event): void {
-    console.log(event)
     const reader = new FileReader()
     const input = event.target as HTMLInputElement
-    // @ts-ignore
+    if (!input.files)
+      return
     reader.readAsText(input.files[0])
     reader.onload = (e) => {
-        // @ts-ignore
-        const data = JSON.parse(e.target.result)
-        this._map.new(data)
+      if (!e.target) 
+        return
+      const result = e.target.result
+      if (!result || typeof result !== 'string')
+        return
+      const data = JSON.parse(result)
+      this._map.new(data)
     }
     input.value = ''
   }
 
-  public _openContentEditor(node: Node): void {
+  public openContentEditor(node: Node): void {
     const target = node.dom
     const config: PopupConfig<NodeContentEditComponent, Node> = {
       target,
@@ -101,7 +112,11 @@ export class MindmapEditorComponent implements OnInit, OnDestroy {
     })
 
     this._map.on('nodeContentEdit', (node: Node) => {
-      this._openContentEditor(node)
+      this.openContentEditor(node)
+    })
+
+    this._map.on('zoom', () => {
+      this._mapZoom$.next()
     })
   }
 }
