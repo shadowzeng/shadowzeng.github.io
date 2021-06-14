@@ -5,11 +5,14 @@ use actix_web::{HttpServer, App, web};
 use actix_web::middleware::Logger;
 use log::{info};
 
-mod db;
-mod errors;
 mod handlers;
 mod models;
+
+mod db;
+mod errors;
 mod schema;
+
+use handlers::{user, map};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -26,10 +29,12 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(Logger::default())
             .data(pool.clone())
-            .route("/users", web::get().to(handlers::get_users))
-            .route("/users/{id}", web::get().to(handlers::get_user_by_id))
-            .route("/users", web::post().to(handlers::add_user))
-            .route("/users/{id}", web::delete().to(handlers::delete_user))
+            .route("/map/todb", web::post().to(map::to_db))
+            // .route("/node", web::get().to(hierarchy_node::new_hierarchy_node))
+            .route("/users", web::get().to(user::get_users))
+            .route("/users/{id}", web::get().to(user::get_user_by_id))
+            .route("/users", web::post().to(user::add_user))
+            .route("/users/{id}", web::delete().to(user::delete_user))
     })
     .bind("0.0.0.0:8083")?
     .run()

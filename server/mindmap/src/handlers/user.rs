@@ -1,9 +1,9 @@
-use super::models::{NewUser, User};
-use super::schema::users::dsl::*;
-use super::db::PostgresPool;
+use crate::models::user::{NewUser, User};
+use crate::schema::users::dsl::*;
+use crate::db::PostgresPool;
 use diesel::QueryDsl;
 use crate::diesel::RunQueryDsl;
-use super::errors::{ServiceError};
+use crate::errors::{ServiceError};
 use actix_web::{web, Error, HttpResponse};
 use diesel::dsl::{delete, insert_into};
 use serde::{Deserialize, Serialize};
