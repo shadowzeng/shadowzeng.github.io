@@ -1,4 +1,4 @@
-const {lcs, lcs_array, _windowMaxSubarrayLength, lcs_array2} = require('./lcs')
+const {lcs, lcs_array, _windowMaxSubarrayLength, lcs_array3} = require('./lcs')
 
 test('lcs test', () => {
     expect(lcs('abc', 'ac')).toBe(2)
@@ -23,9 +23,9 @@ test('window max subarray length', () => {
     expect(_windowMaxSubarrayLength('bacdf', 0, 'eacbf', 0, 5)).toBe(2)
 })
 
-test('lcs_array2 test', () => {
-    expect(lcs_array2('abc', 'ac')).toBe(1)
-    expect(lcs_array2('abc', '')).toBe(0)
-    expect(lcs_array2('', 'ac')).toBe(0)
-    expect(lcs_array2('abcdefg', 'acabcdgabcdemn')).toBe(5)
+test('lcs_array3 test', () => {
+    expect(lcs_array3('abc', 'ac')).toBe(1)
+    expect(lcs_array3('abc', '')).toBe(0)
+    expect(lcs_array3('', 'ac')).toBe(0)
+    expect(lcs_array3('abcdefg', 'acabcdgabcdemn')).toBe(5)
 })

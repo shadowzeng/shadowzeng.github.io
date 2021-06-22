@@ -30,20 +30,29 @@ module.exports.lcs_array = (t1, t2) => {
     let max = 0
     for (let i = t1.length - 1; i >= 0; i--) {
         for (let j = t2.length - 1; j >= 0; j--) {
-            if (t1[i] === t2[j]) {
-                res[i][j] = res[i+1][j+1] + 1
-            }
-            else {
-                res[i][j] = 0 // res[i][j] 表示t1[i:]和t2[j:]的最长公共前缀长度, ab和cab的最长公共前缀为0
-            }
+            // res[i][j] 表示t1[i:]和t2[j:]的最长公共前缀长度, ab和cab的最长公共前缀为0
+            res[i][j] = t1[i] === t2[j] ? res[i + 1][j + 1] + 1 : 0
             max = Math.max(max, res[i][j])
         }
     }
     return max // 注意 res[0][0] 不是最终的结果
 }
 
+module.exports.lcs_array = (t1, t2) => {
+    const res = Array(t1.length + 1).fill(0).map(() => Array(t2.length + 1).fill(0))
+    let max = 0
+    for (let i = 0; i < t1.length; i++) {
+        for (let j = 0; j < t2.length; j++) {
+            res[i + 1][j + 1] = t1[i] === t2[j] ? res[i][j] + 1 : 0
+            max = Math.max(max, res[i + 1][j + 1])
+        }
+    }
+    return max
+}
+
+
 // sliding window
-module.exports.lcs_array2 = (t1, t2) => {
+module.exports.lcs_array3 = (t1, t2) => {
     let res = 0
     /**
      * 两数组左边对齐，t1为基准，t2向右移动
