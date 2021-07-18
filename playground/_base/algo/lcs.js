@@ -38,7 +38,7 @@ module.exports.lcs_array = (t1, t2) => {
     return max // 注意 res[0][0] 不是最终的结果
 }
 
-module.exports.lcs_array = (t1, t2) => {
+module.exports.lcs_array2 = (t1, t2) => {
     const res = Array(t1.length + 1).fill(0).map(() => Array(t2.length + 1).fill(0))
     let max = 0
     for (let i = 0; i < t1.length; i++) {
