@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            border: 1px solid red;
+        }
+        .left {
+            width: 200px;
+        }
+        .right {
+            width: calc(100% - 200px);
+        }
+        .left, .right {
+            display: inline-block;
+            height: 100px;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!--inline-block会考虑空格的存在，这里设置两个50％也还是会换行-->
+    <!--
+        https://stackoverflow.com/questions/6871996/two-inline-block-width-50-elements-wrap-to-second-line
+        https://stackoverflow.com/a/18262352
+    -->
+    <div class='parent'>
+        <span class='left'><div>foo foo</div></span>
+        <span class='right'><div>bar bar</div></span>
+    </div>
+    <div class='parent'>
+        <span class='left'><div>foo foo</div></span><span class='right'><div>bar bar</div></span>
+    </div>
+</body>
+</html>
