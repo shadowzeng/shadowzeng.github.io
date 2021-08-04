@@ -172,5 +172,3 @@ todo
 **/*.log
 *.sublime-workspace
 *.sublime-project
-
-.vscode/launch.json
