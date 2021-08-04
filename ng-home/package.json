@@ -5,10 +5,11 @@
     "ng": "ng",
     "server": "ng serve",
     "build": "ng build",
-    "release": "ng build --prod",
+    "release": "ng build --configuration production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "webpack-build": "ng run ng-home:build-webpack",
     "webpack-server": "ng run ng-home:serve-webpack"
   },
   "private": true,
