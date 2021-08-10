@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core'
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 
-import {OssService} from './oss.service'
+import {EcsService} from './ecs.service'
 
 @NgModule({
-  providers: [OssService],
+  providers: [EcsService],
   imports: [MatSnackBarModule],
 })
-export class MapFileModule { }
+export class FileProviderModule { }

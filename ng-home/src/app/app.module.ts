@@ -6,7 +6,7 @@ import {MatButtonModule} from '@angular/material/button'
 
 import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
-import {MapFileModule} from './file-provider'
+import {FileProviderModule} from './file-provider'
 
 @NgModule({
   declarations: [
@@ -15,10 +15,10 @@ import {MapFileModule} from './file-provider'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FileProviderModule,
     AppRoutingModule,
     MatButtonModule,
     HttpClientModule,
-    MapFileModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
