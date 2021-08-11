@@ -12,7 +12,7 @@ const projectRoot = path.resolve(__dirname, './')
 // https://medium.com/ag-grid/webpack-tutorial-understanding-ngtools-webpack-306dd7f9e07d
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     resolve: {
         extensions: ['.ts', '.js'],
     },
@@ -79,24 +79,15 @@ module.exports = {
                   }
                 ],
             },
-            // {
-            //   test: /\.css$/,
-            //   rules: [
-            //     {
-            //       oneOf: [
-            //         {
-            //           include: [path.resolve(__dirname, './src/styles.scss')],
-            //           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-            //         }
-            //       ]
-            //     }
-            //   ]
-            // },
         ]
     },
+    // 构建目标环境(平台)，修改代码自动刷新浏览器页面与这个配置相关
+    target: 'web',
+    watch: true,
     devServer: {
         historyApiFallback: true,
         port: 8088,
+        compress: false,
         publicPath: '/',
     }
 }

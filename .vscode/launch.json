@@ -25,6 +25,28 @@
             "cwd": "${workspaceFolder}/ng-home",
             "program": "${workspaceFolder}/ng-home/node_modules/.bin/ng",
             "args": ["run", "ng-home:serve-webpack"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "ng serve",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/ng-home",
+            "program": "${workspaceFolder}/ng-home/node_modules/.bin/ng",
+            "args": ["serve"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "webpack serve",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/ng-home",
+            "program": "${workspaceFolder}/ng-home/node_modules/.bin/webpack",
+            "args": ["serve", "--config=webpack.config.dev.js"]
         }
     ]
 }

@@ -102,7 +102,7 @@
         "serve-webpack": {
           "builder": "@angular-devkit/build-webpack:webpack-dev-server",
           "options": {
-            "webpackConfig": "webpack.config.js"
+            "webpackConfig": "webpack.config.dev.js"
           }
         },
         "extract-i18n": {

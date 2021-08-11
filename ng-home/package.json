@@ -9,8 +9,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "webpack-build": "ng run ng-home:build-webpack",
-    "webpack-server": "ng run ng-home:serve-webpack"
+    "ng-webpack-build": "ng run ng-home:build-webpack",
+    "ng-webpack-server": "ng run ng-home:serve-webpack",
+    "webpack-build": "webpack --config=webpack.config.js",
+    "webpack-server-release": "webpack serve --config=webpack.config.js",
+    "webpack-server": "webpack serve --config=webpack.config.dev.js",
+    "http-server": "http-server ./dist"
+    
   },
   "private": true,
   "dependencies": {
@@ -58,6 +63,7 @@
     "postcss-loader": "^6.1.1",
     "protractor": "~7.0.0",
     "raw-loader": "^4.0.2",
-    "typescript": "~4.3.2"
+    "typescript": "~4.3.2",
+    "webpack-cli": "^4.7.2"
   }
 }
