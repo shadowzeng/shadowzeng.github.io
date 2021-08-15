@@ -1,17 +1,15 @@
-html, body {
+:host {
+    display: flex;
     height: 100%;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
 }
 
-.app-root {
-    display: block;
-    height: 100%;
-    position: relative;
+.app-header {
+    height: 48px;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.float-widget {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
+.app-body {
+    flex: 1;
 }

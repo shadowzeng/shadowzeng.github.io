@@ -1,9 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core'
+import {Component} from '@angular/core'
 
 @Component({
-  encapsulation: ViewEncapsulation.None,
   selector: 'app-root',
-  // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'app-root'
   },
