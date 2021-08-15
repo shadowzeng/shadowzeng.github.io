@@ -5,7 +5,7 @@ import {Subject} from 'rxjs'
 import {throttleTime} from 'rxjs/operators'
 
 import {create, MindapInstance, Node} from '../mindap'
-import {PopupConfig, PopupService} from '../popup'
+import {PopupConfig, PopupService} from '../common/popup'
 import {EcsService} from '../file-provider'
 import {NodeContentEditComponent, NODE_CONTENT_EDIT_TOKEN} from './node-content-edit'
 

@@ -4,7 +4,7 @@ import {Subject} from 'rxjs'
 import {throttleTime} from 'rxjs/operators'
 
 import {create} from '../mindap'
-import {PopupService, PopupConfig} from '../popup'
+import {PopupService, PopupConfig} from '../common/popup'
 import {EcsService} from '../file-provider'
 import {NodeMoreComponent, NODE_MORE_CONTENT_TOKEN} from './node-more'
 
