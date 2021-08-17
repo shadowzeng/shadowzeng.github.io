@@ -14,5 +14,5 @@
         "<C-a>": false,
         "<C-f>": false
     },
-    "debug.javascript.autoAttachFilter": "always",
+    "debug.javascript.autoAttachFilter": "disabled",
 }
