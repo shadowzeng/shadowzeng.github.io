@@ -7,6 +7,16 @@
         {
             "type": "pwa-node",
             "request": "launch",
+            "name": "currentFile",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}",
+            "program": "${file}",
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
             "name": "ng build production",
             "skipFiles": [
                 "<node_internals>/**"
