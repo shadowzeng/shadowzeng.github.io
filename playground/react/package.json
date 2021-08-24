@@ -1,0 +1,12 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+      "create-react-app": "create-react-app"
+  },
+  "devDependencies": {
+    "create-react-app": "^4.0.3"
+  }
+}
