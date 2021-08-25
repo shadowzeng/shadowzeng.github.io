@@ -1,6 +1,6 @@
 /**
  * new Promise((resolve, reject) => {
- * 
+ *
  * })
  * .then((result, error) => {})
  * .cacth(error => {})
@@ -24,7 +24,7 @@
  * //     console.log('ccccccc')
  * //     console.log(error)
  * // })
- * 
+ *
  * https://medium.com/swlh/implement-a-simple-promise-in-javascript-20c9705f197a
  */
 function MyPromise(taskFn) {
@@ -32,16 +32,26 @@ function MyPromise(taskFn) {
     this.fulfilledCallback = null
     this.rejectedCallback = null
     this.result = null
-    this.error = null
-    function resolve(result) {
+
+    const resolve = (result) => {
+        if (this.state !== 'pending')
+            return
         this.state = 'fulfilled'
         this.result = result
+        this.fulfilledCallback && this.fulfilledCallback(result)
     }
-    function reject(error) {
+    const reject = (result) => {
+        if (this.state !== 'pending')
+            return
         this.state = 'rejected'
-        this.error = error
+        this.result = result
+        this.rejectedCallback && this.rejectedCallback(result)
     }
-    taskFn(resolve.bind(this), reject.bind(this))
+    try {
+        taskFn(resolve, reject)
+    } catch(error) {
+        reject(error)
+    }
 }
 
 MyPromise.prototype.then = function(fulfilledCallback, rejectedCallback) {
@@ -50,20 +60,33 @@ MyPromise.prototype.then = function(fulfilledCallback, rejectedCallback) {
     if (this.state === 'fulfilled')
         fulfilledCallback(this.result)
     if (this.state === 'rejected')
-        rejectedCallback(this.error)
+        rejectedCallback(this.result)
 }
 
 MyPromise.prototype.catch = function(rejectedCallback) {
-    this.rejectedCallback = rejectedCallback
+    // this.rejectedCallback = rejectedCallback
+    if (this.state === 'rejected')
+        rejectedCallback(this.result)
 }
 
-new MyPromise((resolve, reject) => {
+const promise = new MyPromise((resolve, reject) => {
     console.log('task running')
-    resolve('error message')
-}).then(result => {
-    console.log('result===========')
+    // throw new Error('error message')
+    // resolve('resolved message')
+    // reject('rejected message')
+    setTimeout(() => {
+        resolve('oooooo')
+    }, 1000)
+})
+
+promise.then(result => {
+    console.log('resolve callback===========')
     console.log(result)
 }, error => {
-    console.log('error===========')
+    console.log('reject callback===========')
     console.log(error)
 })
+// .catch(error => {
+//     console.log('catch callback===========')
+//     console.log(error)
+// })
