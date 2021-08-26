@@ -15,4 +15,5 @@
         "<C-f>": false
     },
     "debug.javascript.autoAttachFilter": "disabled",
+    "code-runner.clearPreviousOutput": true,
 }
