@@ -1,5 +1,5 @@
 /**
- *
+ * 链式调用, 延迟执行
  */
 class Chain {
     constructor() {
@@ -7,9 +7,11 @@ class Chain {
         this.tasks = []
     }
     runTask() {
-        const task = this.tasks.shift()
-        if (!task || this.running)
+        if (this.running)
             return
+        if (this.tasks.length === 0)
+            return
+        const task = this.tasks.shift()
         this.running = true
         task().then(() => {
             this.running = false
@@ -52,4 +54,7 @@ class Chain {
     }
 }
 
-new Chain().eat().work().sleep(3000).eat().eat()
+console.log('---')
+// new Chain().sleep(1000).eat().work().sleep(2000).eat().sleep(1000).eat()
+// new Chain().eat().eat().work().work()
+new Chain().sleep(1000).sleep(2000)
