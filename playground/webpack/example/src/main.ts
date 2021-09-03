@@ -1,4 +1,6 @@
-import './style.scss'
+import {times} from 'lodash'
+
+// import './style.scss'
 
 interface User {
     id: number
@@ -11,3 +13,12 @@ function test(user: User): void {
 
 test({id: 1, name: 'hello'})
 
+times(5, e => {
+    console.log(e)
+})
+
+export function lazyLoad(): void {
+    import('./lazy_child').then(mod => {
+        console.log(mod)
+    })
+}

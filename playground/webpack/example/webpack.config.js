@@ -1,7 +1,8 @@
-// const ngToolsWebpack = require('@ngtools/webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin
 const path = require('path')
 
 const workspaceRoot = path.resolve(__dirname, './')
@@ -13,6 +14,8 @@ module.exports = {
     },
     entry: {
         main: './src/main.ts',
+        second: './src/second.ts',
+        vendor: ['lodash']
         // style: './src/style.scss',
     },
     output: {
@@ -20,25 +23,16 @@ module.exports = {
         filename: '[name].js',
     },
     plugins: [
-        // new ngToolsWebpack.AngularWebpackPlugin({
-        //     tsConfigPath: path.resolve(projectRoot, './tsconfig.app.json')
-        // }),
+        new BundleAnalyzerPlugin(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
           template: './src/index.html'
         }),
-        // new CopyWebpackPlugin({
-        //   patterns: [
-        //     {from: './src/assets', to: './assets'},
-        //     {from: './src/data', to: './data'},
-        //     {from: './src/favicon.ico', to: './favicon.ico'},
-        //   ]
-        // }),
         new MiniCssExtractPlugin()
     ],
     module: {
         rules: [
-            // {test: /\.ts$/, loader: '@ngtools/webpack'},
-            {test: /\.ts$/, loader: 'ts-loader'},
+            {test: /\.ts$/, loader: 'ts-loader', options: {configFile: 'tsconfig.json'}},
             {
                 test: /\.scss$/,
                 use: [
