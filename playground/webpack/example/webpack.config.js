@@ -23,10 +23,11 @@ module.exports = {
         filename: '[name].js',
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-          template: './src/index.html'
+          template: './src/index.html',
+          title: 'xxtest',
         }),
         new MiniCssExtractPlugin()
     ],

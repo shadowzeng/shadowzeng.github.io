@@ -12,18 +12,17 @@
         const button = document.getElementById('btn')
         button.addEventListener('click', throttle(handle, 1000, true))
 
-        function handle() {
-            console.log('emit')
+        function handle(event) {
+            console.log(event)
         }
 
         function throttle(func, wait) {
-            let timeout
-            return function() {
-                const context = this, args = arguments
+            let timeout = null
+            return function(...args) {
                 if (timeout)
                     return
+                func.apply(this, args)
                 timeout = setTimeout(() => {
-                    func.apply(context, args)
                     timeout = null
                 }, wait)
             }

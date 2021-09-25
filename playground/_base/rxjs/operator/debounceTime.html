@@ -12,17 +12,17 @@
         const button = document.getElementById('btn')
         button.addEventListener('click', debounce(handle, 1000, true))
 
-        function handle() {
-            console.log('emit')
+        function handle(event) {
+            console.log(event)
         }
 
         function debounce(func, wait) {
-            let timeout
-            return function() {
-                const context = this, args = arguments
+            let timeout = null
+            return function(...args) {
                 clearTimeout(timeout)
                 timeout = setTimeout(() => {
-                    func.apply(context, args)
+                    func.apply(this, args)
+                    timeout = null
                 }, wait)
             }
         }
