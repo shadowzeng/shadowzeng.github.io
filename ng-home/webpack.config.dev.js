@@ -1,11 +1,18 @@
+// 用于修改控制台输出样式
+const chalk = require('chalk')
 const ngToolsWebpack = require('@ngtools/webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+// 编译进度条
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+// 编译速度
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
 const workspaceRoot = path.resolve(__dirname, './')
 const projectRoot = path.resolve(__dirname, './')
+const smp = new SpeedMeasurePlugin()
 
 // 参考
 // https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/build_webpack/test/angular-app/webpack.config.js
@@ -27,6 +34,7 @@ module.exports = {
         filename: '[name].js',
     },
     plugins: [
+        new ProgressBarPlugin({format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`}),
         new ngToolsWebpack.AngularWebpackPlugin({
             tsConfigPath: path.resolve(projectRoot, './tsconfig.app.json')
         }),
