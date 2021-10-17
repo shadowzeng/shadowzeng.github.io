@@ -1,0 +1,1 @@
+若要在vscode上调试nodejs源码, 可以删除launch.json中配置项中的skipFiles
