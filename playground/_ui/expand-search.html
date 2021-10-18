@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            background-color: red;
+            right: 0px;
+            position: absolute;
+        }
+        .search {
+            width: 200px;
+            max-width: 0;
+            transition: all .5s ease;
+            opacity: 0;
+            right: 24px;
+            position: absolute;
+        }
+        .search.expanded {
+            opacity: 1;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <input id='input' class='search'>
+        <div id='icon' class='icon'></div>
+    </div>
+    <script>
+        (function() {
+            const icon = document.getElementById('icon')
+            const input = document.getElementById('input')
+            icon.addEventListener('click', () => {
+                input.classList.toggle('expanded')
+            })
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <a href='#/a'>点击跳转到a</a>
+        <button onclick="toPageB()">点击跳转到b</button>
+    </div>
+    <script>
+        /**
+         * 通过设置hash和监听 window 的 hashchange 事件
+         */
+        window.addEventListener('hashchange', event => {
+            console.log(event)
+        })
+
+        function toPageB() {
+            window.location.hash = '#/b'
+        }
+    </script>
+</body>
+</html>

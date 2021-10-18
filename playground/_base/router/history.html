@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="getCurrentState()">获得当前状态</button>
+        <button onclick="toPageA()">跳到A</button>
+        <button onclick="toPageB()">跳到B</button>
+        <button onclick="replace()">替换</button>
+    </div>
+    <script>
+        /**
+         * 主要使用两个方法,一个事件
+         *  - history.pushState(data, title, url) // 新增加一条历史记录
+         *  - history.replaceState()  // 替换当前记录
+         *  - popstate 事件
+         *
+         *  注意 pushState() 和 replaceState() 并不会出发 popstate 事件
+         *  点击浏览器的回退和前进按钮会触发, 代码中调用 history.back() 和 history.forward() 也会
+         */
+
+        function toPageA() {
+            history.pushState({message: 'page a'}, 'title a', '/a')
+        }
+        function toPageB() {
+            history.pushState({message: 'page b'}, 'title b', '/b')
+        }
+        function replace() {
+            history.replaceState({message: 'replace'}, 'replace', '/c')
+        }
+        function getCurrentState() {
+            console.log(history.state)
+        }
+        window.addEventListener('popstate', event => {
+            console.log(event)
+        })
+    </script>
+</body>
+</html>
