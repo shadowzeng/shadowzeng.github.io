@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {Router, Route} from 'react-router'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Login} from './auth/Login'
 
 function App() {
@@ -9,7 +9,9 @@ function App() {
       <header className="App-header">
       </header>
       <Router>
-          <Route path='/' component={Login}></Route>
+        <Switch>
+          <Route path='/login' component={Login}></Route>
+        </Switch>
       </Router>
     </div>
   );
