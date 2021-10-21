@@ -1,5 +1,6 @@
-export default class Foo {
+import {cloneDeep} from 'lodash'
+export default class Bar {
     foo() {return 'foo'}
     bar() {return 'bar'}
 }
-console.log('xyyyy')
+console.log(cloneDeep)

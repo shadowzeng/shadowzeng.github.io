@@ -11,7 +11,7 @@ module.exports = {
     mode: 'production',
     entry: {
         main: './src/main.js',
-        second: './src/second.js',
+        // second: './src/second.js',
         // vendor: ['lodash']
     },
     output: {
@@ -31,8 +31,8 @@ module.exports = {
          */
         // runtimeChunk: true,
         splitChunks: {
-            // 默认是'async', 表示
-            // chunks: 'initial',
+            // 默认是'async', 表示只考虑异步加载的模块
+            chunks: 'initial',
             // 最少需要多少字节才会生成chunk
             // minSize: 20000,
             // minRemainingSize: 0,
