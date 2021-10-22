@@ -16,35 +16,12 @@ function sum(a, b, c, d) {
     return a + b + c +d
 }
 // const curriedSum = currying(sum)
-// console.log(curriedSum(1, 2, 3, 4))
-// console.log(curriedSum(1)(2, 3, 4))
-// console.log(curriedSum(1)(2)(3)(4))
-// console.log(curriedSum(1)(2, 3)(4))
-// console.log(curriedSum(1, 2, 3)(4))
-// console.log(curriedSum(1, 2, 3)(4, 5, 6))
+
 
 /**
  * 参数不固定的情况
  * add(1)(2, 3)(4)()  // 10
  */
-// function add(...args) {
-//     return args.reduce((a, b) => a + b, 0)
-// }
-
-// console.log(add())
-
-// const add=(...args)=>{
-//             let vars=[]
-//             const curried=(...c)=>{
-//                 vars=[...vars,...c]
-//                 return curried
-//             }
-//             curried.toString=()=>{
-//                  return vars.reduce((a,b)=>a+b,0)
-//             }
-//             return curried(...args)
-//         }
-// console.log(add(1)(2)(3, 4)(5).toString())
 function add(...args) {
     let allArgs = []
     function curried(...args1) {
@@ -56,4 +33,21 @@ function add(...args) {
     return curried(...args)
 }
 
-console.log(add())
+// console.log(add())
+
+/**
+ *  参数不固定2
+ */
+function add2(...args) {
+    let allArgs = []
+    function curried(...args1) {
+        allArgs = [...allArgs, ...args1]
+        return curried
+    }
+    curried.count = () => {
+        return allArgs.reduce((a, b) => a + b, 0)
+    }
+    return curried(...args)
+}
+
+console.log(add2(1,2)(3).count())
