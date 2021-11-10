@@ -1,4 +1,4 @@
-test5()
+test6()
 
 function test1() {
     function count() {
@@ -59,4 +59,24 @@ function test5() {
     // 同一个闭包函数
     bar() // [1]
     bar() // [1, 1]
+}
+
+function test6() {
+    let a = 3
+    let result = []
+    let total = 0
+    function test(a) {
+        var i = 0;
+        for(; i < 3; i++) {
+            result[i] = function() {
+              total += i * a
+              console.log(total)
+            }
+        }
+    }
+    test(1)
+    result[0]()
+    result[1]()
+    result[2]()
+    // 输出 3 6 9
 }
