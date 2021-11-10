@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const div = document.createElement('div')
+        document.body.append(div)
+        setTimeout(() => {
+            console.log('setTimeout')
+        })
+        const observer = new MutationObserver(function(mutations, observer) {
+            console.log('mutation')
+        })
+        observer.observe(document.body, {
+            childList: true
+        })
+        Promise.resolve().then(() => {
+            console.log('promise')
+        })
+        requestAnimationFrame(() => {
+            console.log('requestAnimationFrame')
+        })
+        /**
+         * 输出:
+         *  promise
+         *  mutation
+         *  // 下面两个顺序不确定
+         *  setTimeout
+         *  requestAnimationFrame
+         *
+         * 一帧在渲染前会调用rAF, 这期间可能执行多个task
+         *     document.body.style.background = 'red'
+         *     setTimeout(() => {
+         *        document.body.style.background = 'black'
+         *     })
+         * 上述代码浏览器可能直接在一帧中绘制为黑色, 也可能一帧绘制为红色, 再一帧绘制为黑色
+         * 如果计时器设置时间间隔大于16ms, 那么大概率是先红后黑
+         * 如果使用 rAF 就可以保证先红后黑
+         */
+    </script>
+</body>
+</html>
