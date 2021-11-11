@@ -7,17 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+    <button id='button'>OK</button>
     <script>
         const div = document.createElement('div')
         document.body.append(div)
         setTimeout(() => {
             console.log('setTimeout')
-        })
+        }, 11)
         const observer = new MutationObserver(function(mutations, observer) {
             console.log('mutation')
         })
         observer.observe(document.body, {
             childList: true
+        })
+        requestIdleCallback(() => {
+            console.log('requestIdleCallback')
         })
         Promise.resolve().then(() => {
             console.log('promise')
@@ -25,13 +29,21 @@
         requestAnimationFrame(() => {
             console.log('requestAnimationFrame')
         })
+        const button = document.getElementById('button')
+        button.addEventListener('click', () => {
+            console.log('click event')
+        })
+        button.click()
         /**
          * 输出:
+         *  click event
          *  promise
          *  mutation
-         *  // 下面两个顺序不确定
-         *  setTimeout
-         *  requestAnimationFrame
+         *                         <---
+         *  requestAnimationFrame     |
+         *                         <--- setTimeout 根据设置延时大小不同可能出现在这三个位置
+         *  requestIdleCallback       |
+         *                         <---
          *
          * 一帧在渲染前会调用rAF, 这期间可能执行多个task
          *     document.body.style.background = 'red'
