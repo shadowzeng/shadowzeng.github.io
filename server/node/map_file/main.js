@@ -14,4 +14,8 @@ const auth = require('./auth/router')
 
 server.use('/auth', auth)
 
+server.get('/test', (req, res) => {
+    res.send('test call')
+})
+
 server.listen(8000, () => console.log('map file server listening on 8000'))

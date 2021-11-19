@@ -57,6 +57,30 @@
             "cwd": "${workspaceFolder}/ng-home",
             "program": "${workspaceFolder}/ng-home/node_modules/.bin/webpack",
             "args": ["serve", "--config=webpack.config.dev.js"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            // React serve
+            "name": "react serve",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/client/admin",
+            "program": "${workspaceFolder}/client/admin/node_modules/.bin/react-scripts",
+            "args": ["start"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            // Angular demo serve
+            "name": "angular demo serve",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/playground/angular/demo",
+            "program": "${workspaceFolder}/playground/angular/demo/node_modules/.bin/ng",
+            "args": ["serve"]
         }
     ]
 }
