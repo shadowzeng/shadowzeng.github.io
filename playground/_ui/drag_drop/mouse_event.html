@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto;
+        }
+        .container {
+            height: 2000px;
+            width: 3000px;
+        }
+        #drag {
+            width: 100px;
+            height: 100px;
+            background-color: wheat;
+            position: relative;
+            top: 600px;
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div id='drag'></div>
+    </div>
+    <script>
+        draggable(document.getElementById('drag'))
+        function draggable(el) {
+            let startX, startY
+            function onMousedown(event) {
+                debugger
+                startX = event.clientX - el.offsetLeft
+                startY = event.clientY - el.offsetTop
+                document.addEventListener('mousemove', onMousemove)
+                document.addEventListener('mouseup', onMouseup)
+            }
+
+            function onMousemove(event) {
+                const changeX = event.clientX - startX
+                const changeY = event.clientY - startY
+                el.style.left = `${changeX}px`
+                el.style.top = `${changeY}px`
+            }
+
+            function onMouseup() {
+                document.removeEventListener('mousemove', onMousemove)
+                document.removeEventListener('mouseup', onMouseup)
+            }
+
+            el.addEventListener('mousedown', onMousedown)
+        }
+        function draggable2(el) { // TODO
+            let startX, startY
+            function onMousedown(event) {
+                debugger
+                startX = event.clientX - el.offsetLeft
+                startY = event.clientY - el.offsetTop
+                document.addEventListener('mousemove', onMousemove)
+                document.addEventListener('mouseup', onMouseup)
+            }
+
+            function onMousemove(event) {
+                const changeX = event.clientX - startX
+                const changeY = event.clientY - startY
+                el.style.left = `${changeX}px`
+                el.style.top = `${changeY}px`
+                el.style.transform = `translate()`
+            }
+
+            function onMouseup() {
+                document.removeEventListener('mousemove', onMousemove)
+                document.removeEventListener('mouseup', onMouseup)
+            }
+
+            el.addEventListener('mousedown', onMousedown)
+        }
+    </script>
+</body>
+</html>

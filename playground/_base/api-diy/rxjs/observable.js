@@ -13,10 +13,11 @@
 class Observable {
     constructor(taskFn) {
         this.taskFn = taskFn
+        this.ops = []
     }
 
     pipe(...ops) {
-
+        this.ops = ops
     }
 
     subscribe(nextFn, errorFn, completeFn) {
