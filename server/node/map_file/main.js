@@ -18,4 +18,9 @@ server.get('/test', (req, res) => {
     res.send('test call')
 })
 
-server.listen(8000, () => console.log('map file server listening on 8000'))
+server.post('/upload', (req, res) => {
+    console.log(req)
+    res.send('upload call')
+})
+
+server.listen(8011, () => console.log('map file server listening on 8011'))
