@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "eamodio.gitlens",
-        "formulahendry.code-runner"
+        "formulahendry.code-runner",
+        "ritwickdey.liveserver"
     ]
 }

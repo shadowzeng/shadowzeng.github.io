@@ -1,15 +1,20 @@
 // 'use strict'
-console.log(foo)
-let age = Math.random()
 
-if (age > 0.5) {
-    function foo() {
-        console.log('111')
-    }
-} else {
-    function foo() {
-        console.log('222')
-    }
+function task(result) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(result)
+        }, 1000)
+    })
 }
 
-foo()
+async function foo() {
+    const result = await task('hello')
+    console.log(result)
+}
+
+async function bar() {
+    const result = foo()
+    console.log(result)
+}
+bar()
