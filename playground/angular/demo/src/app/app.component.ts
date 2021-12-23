@@ -11,7 +11,8 @@ export class AppComponent {
   text = 'test'
   ngOnInit(): void {
     setTimeout(() => {
-      this.foo = 'bar'
+      debugger
+      // this.foo = 'bar'
       this.text = 'hello'
     }, 1000)
   }

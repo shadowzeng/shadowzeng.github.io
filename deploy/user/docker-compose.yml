@@ -1,0 +1,14 @@
+services:
+    db:
+        image: mongo:4.4.10
+        container_name: mongo-db
+        ports:
+            - 27017:27017
+        volumes:
+            - ~/docker_volumes/mongo_data:/data/db
+    react-app:
+        image: react-app:latest
+        container_name: readt-app
+        ports:
+            # 宿主机端口:容器内端口
+            - 3000:8099
