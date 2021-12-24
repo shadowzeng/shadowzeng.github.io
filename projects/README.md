@@ -23,3 +23,14 @@ docker exec -it container-name /bin/bash
 ```
 docker logs <container_id>
 ```
+
+关于Github Action
+```
+Github Action是Github推出的一个CI/CD持续集成服务
+可以在仓库的.github/workflows目录中通过yml文件来定义工作流
+几个概念：
+workflow(工作流): 由多个job构成
+job(任务): 由多个step构成
+step(步骤): 可以执行多个action
+action(动作)
+```

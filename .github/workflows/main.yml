@@ -1,0 +1,25 @@
+name: build and deploy(CI)
+on:
+    push:
+        branches:
+            - master # push时触发
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-18.04 # github提供的运行job的平台
+        defaults:
+            run:
+                working-directory: ./projects/c-react-auth
+        steps:
+            - uses: actions/checkout@v2 # 检出仓库代码
+            - name: User Node.js # 安装node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '14'
+            - name: npm install and build # 构建应用
+              run: |
+                npm install
+                npm run build
+            - name: build and publish docker image
+              uses: docker/build-push-action@v2
+              with:
+                push
