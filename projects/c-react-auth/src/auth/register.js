@@ -12,7 +12,7 @@ export class Register extends React.Component {
 
     save() {
         const user = {name: this.state.name}
-        fetch('http://localhost:3000/api/save', {
+        fetch('/api/saved', {
             method: 'POST',
             body: JSON.stringify(user)
         })

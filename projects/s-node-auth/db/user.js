@@ -23,7 +23,7 @@ class UserAction {
             u.save((err, res) => {
                 if (err)
                     reject(err)
-                console.log(res)
+                // console.log(res)
                 resolve(res)
             })
         })

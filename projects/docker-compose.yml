@@ -1,0 +1,36 @@
+services:
+    mongo-db:
+        image: mongo:4.4.10
+        container_name: mongo-db
+        ports:
+            - 27017:27017
+        volumes:
+            - ~/docker_volumes/mongo_data:/data/db
+        networks:
+            - server-side
+    node-auth-server:
+        build: s-node-auth/
+        # image: node-auth:latest
+        environment:
+            PORT: 10123
+            MONGODB_URI: mongodb://mongo-db:27017/test
+        container_name: node-auth-server
+        ports:
+            - 10123:10123
+        networks:
+            - server-side
+        depends_on:
+            - mongo-db
+    react-auth-client:
+        build: c-react-auth/
+        # image: react-auth:latest
+        container_name: react-auth-client
+        ports:
+            # 宿主机端口:容器内端口
+            - 3000:8099
+        volumes:
+            - ~/docker_volumes/nginx_data/logs:/etc/nginx/logs/
+        networks:
+            - server-side
+networks:
+    server-side: {}
