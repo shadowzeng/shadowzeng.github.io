@@ -1,4 +1,15 @@
-test6()
+test0()
+
+function test0() {
+    // 使用let在每次循环都是一个新的变量（内部会记住上一次循环变量的值）
+    // 使用 var 则是同一个变量，最终值为5
+    function count() {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => console.log(i), 1000)
+        }
+    }
+    count()
+}
 
 function test1() {
     function count() {
