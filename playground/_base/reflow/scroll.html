@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {padding: 0; margin: 0; height: 100%;}
+        body {position: relative;}
+        #root {width: 100px; height: 100%; overflow: auto; word-break: break-all;}
+        #float {position: absolute; left: 10px; top: 10px; width: 100px; height: 100px; background-color: tomato;}
+    </style>
+</head>
+<body>
+    <div id='root'></div>
+    <div id='float'></div>
+    <script>
+        (function() {
+            const text = Array(1000).fill(0).map((e, i) => i.toString()).join('')
+            const root = document.getElementById('root')
+            root.textContent = text
+            const float = document.getElementById('float')
+            root.addEventListener('click', () => {
+                // root.style.width = '200px' //　触发reflow
+                // root.style.backgroundColor = 'tomato'  // 修改背景颜色不触发reflow
+                // float.style.width = '200px' // 修改绝对定位元素尺寸　会触发reflow
+                // float.style.left = '20px' // 修改绝对定位偏移　会触发reflow
+                // root.scrollTop = 100 // Chrome测试并未触发reflow
+                const width = root.clientWidth
+                console.log(width)
+            })
+        })()
+    </script>
+</body>
+</html>
