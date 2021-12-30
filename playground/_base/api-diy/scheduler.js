@@ -111,52 +111,109 @@ function multiRequest(urls, max, callback) {
 //     console.log(result)
 // })
 
+test()
 
-/**
- * 实现带有并发限制的调度器Scheduler
- */
-class Scheduler {
-    constructor(concurrency) {
-        this.concurrency = concurrency
-        this.runningNum = 0
-        this.taskQueue = []
-    }
-
+function test() {
     /**
-     * task: () => Promise
+     * 同时发送多个请求，每个请求耗时不同，需要按顺序输出
+     * req1: 10ms
+     * req2: 5ms
+     * 那么输出过程是: 10ms后输出 req1 req2
+     * req1: 5ms
+     * req2: 10ms
+     * 那么输出过程是: 5ms后输出 req1, 再过5ms输出 req2
      */
-    add(task) {
-        this.taskQueue.push(task)
-        this.runTask()
+    function sendRequests(reqs) {
+        const tasks = reqs.map(req => {
+            return fetch(req.time, req.error)
+        })
+        tasks.reduce((chain, promise, index) => {
+            return chain.then(() => promise)
+            .then(data => console.log(data)).catch(err => console.error(err))
+        }, Promise.resolve())
     }
 
-    runTask() {
-        if (this.runningNum >= this.concurrency)
-            return
-        const task = this.taskQueue.shift()
-        if (!task)
-            return
-        this.runningNum ++
-        task().then(() => {
-            this.runningNum --
-            this.runTask()
-        }).catch(() => {
-            this.runningNum --
-            this.runTask()
+    async function sendRequests1(reqs) {
+        const tasks = reqs.map(req => {
+            return fetch(req.time, req.error)
+        })
+        for (let i = 0; i < tasks.length; i++) {
+            try {
+                const res = await tasks[i]
+                console.log(res)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+
+    function fetch(time, error = false) {
+        return new Promise((resolve, reject) => {
+            console.log('send')
+            setTimeout(() => {
+                if (error)
+                    reject('error')
+                else
+                    resolve(time.toString())
+            }, time)
         })
     }
+    sendRequests([
+        {time: 2000, error: false},
+        {time: 4000, error: false},
+        {time: 3000, error: true},
+        {time: 1000, error: false},
+    ])
 }
 
-const scheduler = new Scheduler(3)
 
-const timeout = (time) => new Promise(resolve => {
-    setTimeout(resolve, time)
-})
-const addTask = (time, order) => {
-    scheduler.add(() => timeout(time).then(() => console.log(order)))
+function test4() {
+    /**
+    * 实现带有并发限制的调度器Scheduler
+    */
+    class Scheduler {
+        constructor(concurrency) {
+            this.concurrency = concurrency
+            this.runningNum = 0
+            this.taskQueue = []
+        }
+
+        /**
+        * task: () => Promise
+        */
+        add(task) {
+            this.taskQueue.push(task)
+            this.runTask()
+        }
+
+        runTask() {
+            if (this.runningNum >= this.concurrency)
+                return
+            const task = this.taskQueue.shift()
+            if (!task)
+                return
+            this.runningNum ++
+            task().then(() => {
+                this.runningNum --
+                this.runTask()
+            }).catch(() => {
+                this.runningNum --
+                this.runTask()
+            })
+        }
+    }
+
+    const scheduler = new Scheduler(3)
+
+    const timeout = (time) => new Promise(resolve => {
+        setTimeout(resolve, time)
+    })
+    const addTask = (time, order) => {
+        scheduler.add(() => timeout(time).then(() => console.log(order)))
+    }
+    // 并发数为2时 期待输出 2 3 1 4
+    addTask(1000, '1')
+    addTask(500, '2')
+    addTask(300, '3')
+    addTask(400, '4')
 }
-// 并发数为2时 期待输出 2 3 1 4
-addTask(1000, '1')
-addTask(500, '2')
-addTask(300, '3')
-addTask(400, '4')
