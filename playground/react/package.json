@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-      "create-react-app": "create-react-app"
+    "create-react-app": "create-react-app"
   },
   "devDependencies": {
-    "create-react-app": "^4.0.3"
+    "create-react-app": "^4.0.3",
+    "dva-cli": "^0.10.1"
   }
 }
