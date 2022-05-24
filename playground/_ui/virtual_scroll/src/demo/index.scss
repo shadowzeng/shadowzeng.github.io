@@ -1,0 +1,16 @@
+.v-scroll-viewport {
+    height: 320px;
+    position: relative;
+    overflow-y: auto;
+    border: 1px solid rgba(0,0,0,0.12);
+}
+
+.v-scroll-placeholder {
+    position: absolute;
+    width: 1px;
+    right: 0;
+}
+
+.v-scroll-item {
+    height: 32px;
+}
