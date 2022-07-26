@@ -1,6 +1,8 @@
 function myInstanceof(obj, fn) {
     if (typeof fn !== 'function')
         throw new Error('fn should be a function')
+    if (typeof obj !== 'object' || obj === null)
+        return false;
     let proto = Object.getPrototypeOf(obj)
     while (proto) {
         if (proto === fn.prototype)
